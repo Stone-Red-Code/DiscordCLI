@@ -1,12 +1,11 @@
-﻿using DSharpPlus;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using DSharpPlus.Entities;
+using DSharpPlus;
 using Stone_Red_Utilities.ColorConsole;
-
-using DSharpPlus.Entities;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System;
 
 namespace DiscordCLI
 {
@@ -16,7 +15,7 @@ namespace DiscordCLI
 
         private readonly Dictionary<string, (string, Action<string>)> CommandsList;
 
-        public CommandsManager(DiscordClient dicordClient) : base(dicordClient)
+        public CommandsManager(DiscordClient dicordClient, OutputManager outputManager) : base(dicordClient, outputManager)
         {
             client = dicordClient;
 
@@ -85,9 +84,12 @@ namespace DiscordCLI
 
         private readonly DiscordClient client;
 
-        public Commands(DiscordClient dicordClient)
+        private readonly OutputManager outputManager;
+
+        public Commands(DiscordClient dicordClient, OutputManager outputMan)
         {
             client = dicordClient;
+            outputManager = outputMan;
         }
 
         protected void ListGuilds(string args)
@@ -187,7 +189,7 @@ namespace DiscordCLI
             {
                 try
                 {
-                    await Program.WriteMessage(message, textChannel, GlobalInformation.currentGuild);
+                    await outputManager.WriteMessage(message, textChannel, GlobalInformation.currentGuild);
                 }
                 catch (Exception ex)
                 {
