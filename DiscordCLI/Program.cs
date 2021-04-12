@@ -159,7 +159,7 @@ namespace DiscordCLI
             });
         }
 
-        private async static void WriteTop(string message, Color color, DiscordMessage discordMessage, string info = null)
+        private static void WriteTop(string message, Color color, DiscordMessage discordMessage, string info = null)
         {
             ConsoleColor consoleColor = ClosestConsoleColor3(color);
 
