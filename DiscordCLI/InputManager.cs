@@ -1,6 +1,8 @@
 ﻿using DSharpPlus;
 using System.Threading.Tasks;
 using System;
+using DSharpPlus.Entities;
+using System.Linq;
 
 namespace DiscordCLI
 {
@@ -8,7 +10,8 @@ namespace DiscordCLI
     {
         private readonly CommandsManager commandsManager;
         private readonly DiscordClient client;
-        public string Input { get; private set; } = "<";
+        public const string prefix = ">";
+        public string Input { get; private set; } = prefix;
 
         public InputManager(DiscordClient dicordClient, CommandsManager commandsMan)
         {
@@ -23,8 +26,9 @@ namespace DiscordCLI
                 bool exit = false;
                 while (!exit)
                 {
-                    string infoString = $"\r[{client.CurrentUser.Username}#{client.CurrentUser.Discriminator}] [{GlobalInformation.currentGuild?.Name}/{GlobalInformation.currentTextChannel?.Name}] ==> ";
-                    if (Input.StartsWith('<'))
+                    DiscordDmChannel dmChannel = GlobalInformation.currentTextChannel as DiscordDmChannel;
+                    string infoString = $"\r[{client.CurrentUser.Username}#{client.CurrentUser.Discriminator}] [{(dmChannel is null ? GlobalInformation.currentGuild?.Name : "DMs")}/{(dmChannel is null ? GlobalInformation.currentTextChannel?.Name : string.Join(", ", dmChannel.Recipients.Select(x => x.Username)))}] ==> ";
+                    if (Input.StartsWith(prefix))
                         Console.Write(Environment.NewLine + infoString);
 
                     Input = string.Empty;
@@ -48,12 +52,11 @@ namespace DiscordCLI
                         Console.CursorLeft = infoString.Length + Input.Length - 1;
                     } while (keyInfo.Key != ConsoleKey.Enter);
 
-                    if (GlobalInformation.currentTextChannel == null && !Input.StartsWith('<'))
-                        Input = "<" + Input;
+                    if (GlobalInformation.currentTextChannel == null && !Input.StartsWith(prefix))
+                        Input = prefix + Input;
 
                     exit = commandsManager.CheckCommand(Input);
                 }
-                Environment.Exit(0);
             });
         }
     }

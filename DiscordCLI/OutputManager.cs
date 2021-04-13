@@ -29,12 +29,19 @@ namespace DiscordCLI
                     return;
 
                 DiscordUser user = message.Author;
-                DiscordMember discordMember = await guild.GetMemberAsync(user.Id);
-                DiscordColor discordColor = discordMember.Color;
 
-                Color color = Color.FromArgb(discordColor.R, discordColor.G, discordColor.B);
+                if (GlobalInformation.currentGuild is not null)
+                {
+                    DiscordMember discordMember = await guild.GetMemberAsync(user.Id);
+                    DiscordColor discordColor = discordMember.Color;
+                    Color color = Color.FromArgb(discordColor.R, discordColor.G, discordColor.B);
 
-                WriteTop($"[{discordMember.DisplayName}]", color, message, true, true, $"{discordMember.Username}#{discordMember.Discriminator} {message.Timestamp.LocalDateTime}");
+                    WriteTop($"[{discordMember.DisplayName}]", color, message, true, true, $"{discordMember.Username}#{discordMember.Discriminator} {message.Timestamp.LocalDateTime}");
+                }
+                else
+                {
+                    WriteTop($"[{user.Username}]", Color.White, message, true, true, $"{user.Username}#{user.Discriminator} {message.Timestamp.LocalDateTime}");
+                }
 
                 if (!string.IsNullOrWhiteSpace(message.Content))
                     WriteTop(message.Content, Color.White, message);
@@ -57,12 +64,13 @@ namespace DiscordCLI
                         WriteTop(">>> ", Color.FromArgb(embed.Color.Value), message, true, false);
                         WriteTop($"{embed.Description}", Color.White, message, false);
                     }
-                    foreach (DiscordEmbedField field in embed.Fields)
-                    {
-                        WriteTop(">>> ", Color.FromArgb(embed.Color.Value), message, true, false);
-                        WriteTop($"{field.Name}{Environment.NewLine}{field.Value}", Color.White, message, false);
-                    }
-                    //WriteTop($"{string.Join(Environment.NewLine, embed.Fields.Select(x => $"> {x.Name}{Environment.NewLine}{x.Value}"))}", Color.White, message);
+
+                    if (embed.Fields is not null)
+                        foreach (DiscordEmbedField field in embed.Fields)
+                        {
+                            WriteTop(">>> ", Color.FromArgb(embed.Color.Value), message, true, false);
+                            WriteTop($"{field.Name}{Environment.NewLine}{field.Value}", Color.White, message, false);
+                        }
                 }
             }
             catch (Exception ex)
@@ -71,7 +79,9 @@ namespace DiscordCLI
             }
 
             WriteTop(string.Empty, Color.White, message);
-            Console.Write($"[{client.CurrentUser.Username}#{client.CurrentUser.Discriminator}] [{GlobalInformation.currentGuild?.Name}/{GlobalInformation.currentTextChannel?.Name}] ==> ");
+            DiscordDmChannel dmChannel = GlobalInformation.currentTextChannel as DiscordDmChannel;
+            string infoString = $"\r[{client.CurrentUser.Username}#{client.CurrentUser.Discriminator}] [{(dmChannel is null ? GlobalInformation.currentGuild?.Name : "DMs")}/{(dmChannel is null ? GlobalInformation.currentTextChannel?.Name : string.Join(", ", dmChannel.Recipients.Select(x => x.Username)))}] ==> ";
+            Console.Write(infoString);
             Console.Write(InputManager.Input);
         }
 
@@ -112,26 +122,28 @@ namespace DiscordCLI
                     }
                 }
 
-                foreach (DiscordChannel channel in discordMessage.MentionedChannels)
-                {
-                    if (channel?.Mention is not null)
-                        if (words[i].Contains(channel.Mention))
-                        {
-                            words[i] = words[i].Replace(channel.Mention, $"#{channel.Name}");
-                            mentionColor = ConsoleColor.Blue;
-                        }
-                }
+                if (!discordMessage.Channel.IsPrivate)
+                    foreach (DiscordChannel channel in discordMessage.MentionedChannels)
+                    {
+                        if (channel?.Mention is not null)
+                            if (words[i].Contains(channel.Mention))
+                            {
+                                words[i] = words[i].Replace(channel.Mention, $"#{channel.Name}");
+                                mentionColor = ConsoleColor.Blue;
+                            }
+                    }
 
-                foreach (DiscordRole role in discordMessage.MentionedRoles)
-                {
-                    if (role?.Mention is not null)
-                        if (words[i].Contains(role.Mention))
-                        {
-                            words[i] = words[i].Replace(role.Mention, $"@{role.Name}");
-                            DiscordColor discordColor = role.Color;
-                            mentionColor = ClosestConsoleColor(Color.FromArgb(discordColor.R, discordColor.G, discordColor.B));
-                        }
-                }
+                if (!discordMessage.Channel.IsPrivate)
+                    foreach (DiscordRole role in discordMessage.MentionedRoles)
+                    {
+                        if (role?.Mention is not null)
+                            if (words[i].Contains(role.Mention))
+                            {
+                                words[i] = words[i].Replace(role.Mention, $"@{role.Name}");
+                                DiscordColor discordColor = role.Color;
+                                mentionColor = ClosestConsoleColor(Color.FromArgb(discordColor.R, discordColor.G, discordColor.B));
+                            }
+                    }
 
                 ConsoleExt.Write(words[i] + " ", mentionColor == ConsoleColor.Black ? consoleColor : mentionColor);
             }
@@ -150,7 +162,7 @@ namespace DiscordCLI
         private ConsoleColor ClosestConsoleColor(Color targetColor)
         {
             double minDif = double.MaxValue;
-            ConsoleColor bestColor = ConsoleColor.White;
+            ConsoleColor closestColor = ConsoleColor.White;
 
             foreach (ConsoleColor consoleColor in Enum.GetValues(typeof(ConsoleColor)))
             {
@@ -174,10 +186,10 @@ namespace DiscordCLI
                 if (diff < minDif)
                 {
                     minDif = diff;
-                    bestColor = consoleColor;
+                    closestColor = consoleColor;
                 }
             }
-            return bestColor;
+            return closestColor;
         }
     }
 }

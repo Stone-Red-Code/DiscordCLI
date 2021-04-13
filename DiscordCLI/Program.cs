@@ -8,8 +8,7 @@ namespace DiscordCLI
 {
     internal class Program
     {
-        public static void Main(string[] args)
-        => new Program().MainAsync().GetAwaiter().GetResult();
+        public static void Main() => new Program().MainAsync().GetAwaiter().GetResult();
 
         private DiscordClient client;
         private InputManager inputManager;
@@ -27,6 +26,7 @@ namespace DiscordCLI
             if (File.Exists(tokenPath))
                 token = File.ReadAllText(tokenPath);
 
+            tokenInput:
             while (string.IsNullOrEmpty(token))
             {
                 Console.Write("Enter auth token: ");
@@ -52,7 +52,11 @@ namespace DiscordCLI
                 ConsoleExt.WriteLine(ex, ConsoleColor.Red);
 
                 if (ex.Message.Contains("Authentication failed"))
+                {
                     File.Delete(tokenPath);
+                    token = string.Empty;
+                    goto tokenInput;
+                }
                 return;
             }
 
