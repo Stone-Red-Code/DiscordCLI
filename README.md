@@ -3,7 +3,7 @@
 
 ## Warning
 Use this software at your own risk.\
-This isn't directly a selfbot, but Discord may count it as User account automation and this is against the terms of use.\
+This isn't directly a selfbot, but Discord may count it as User account automation and this is against their TOS.\
 I guess everything should be fine as long as you don't behave conspicuously but still proceed with caution!\
 Currently there are no known cases where a user got banned for using this software.\
 I will update the above if anything changes!
@@ -14,7 +14,7 @@ Releases: https://github.com/Stone-Red-Code/DiscordCLI/releases
 ## Usage
 1. <a href="https://github.com/Stone-Red-Code/DiscordCLI/releases">Download</a> one of the releases
 2. Execute the `DiscordCLI` file
-3. Enter your <a href="https://github.com/Stone-Red-Code/DiscordCLI/releases">User Token</a>
+3. Enter your <a href="https://github.com/Tyrrrz/DiscordChatExporter/wiki/Obtaining-Token-and-Channel-IDs#how-to-get-a-user-token">User Token</a>
 4. Enter one of the commands below
 
 ## Commands
