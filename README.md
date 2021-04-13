@@ -2,7 +2,7 @@
 > Use Discord in the terminal
 
 ## Warning
-**Use this software at your own risk.**\
+**Use this software at your own risk!**\
 This isn't directly a selfbot, but Discord may count it as User account automation and this is against their TOS.\
 I guess everything should be fine as long as you don't behave conspicuously but still proceed with caution!\
 Currently there are no known cases where a user got banned for using this software.\
