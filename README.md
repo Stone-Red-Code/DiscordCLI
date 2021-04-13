@@ -40,3 +40,18 @@ Releases: https://github.com/Stone-Red-Code/DiscordCLI/releases
 ### enterd
   - enter DM channel
   - args: <channel name/index>
+
+## Limitations
+DiscordCLI doesn't support everything the officil Discord app does.
+I'm trying to add more features continuously to it but there will be always some limitations.
+
+### Current limitation:
+- No voice support
+- Mentions can't be created easily
+- You can't add/remove guilds
+- You can't create/accept friend requests
+- Discord online status not updating
+<br>
+And maybe more.
+<br>
+If you find a missing feature in DiscordCLI please tell me or create a pull request and update this list.
