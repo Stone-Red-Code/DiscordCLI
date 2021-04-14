@@ -52,6 +52,6 @@ I'm trying to add more features continuously to it but there will be always some
 - You can't create/accept friend requests
 - Discord online status not updating
 <br>
-And maybe more.
+And propably more.
 <br>
 If you find a missing feature in DiscordCLI please tell me or create a pull request and update this list.
