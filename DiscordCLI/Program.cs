@@ -27,7 +27,7 @@ namespace DiscordCLI
                 token = File.ReadAllText(tokenPath);
 
             tokenInput:
-            while (string.IsNullOrEmpty(token))
+            while (string.IsNullOrWhiteSpace(token))
             {
                 Console.Write("Enter auth token: ");
                 token = Console.ReadLine();

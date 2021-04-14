@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System;
+using System.Threading.Tasks;
 
 namespace DiscordCLI
 {
@@ -21,7 +22,7 @@ namespace DiscordCLI
             outputManager = outputMan;
         }
 
-        protected void ListGuilds(string args)
+        protected async Task ListGuilds(string args)
         {
             int index = 1;
             foreach (DiscordGuild guild in client.Guilds.Values)
@@ -29,9 +30,11 @@ namespace DiscordCLI
                 Console.WriteLine($"{index}. {guild.Name}");
                 index++;
             }
+
+            await Task.CompletedTask;
         }
 
-        protected void ListDms(string args)
+        protected async Task ListDms(string args)
         {
             int index = 1;
             foreach (DiscordDmChannel dmChannel in client.PrivateChannels)
@@ -39,9 +42,10 @@ namespace DiscordCLI
                 Console.WriteLine($"{index}. {string.Join(", ", dmChannel.Recipients.Select(x => x.Username))}");
                 index++;
             }
+            await Task.CompletedTask;
         }
 
-        protected void ListGuildChannels(string args)
+        protected async Task ListGuildChannels(string args)
         {
             IReadOnlyCollection<DiscordChannel> textChannels;
             DiscordGuild guild;
@@ -88,9 +92,11 @@ namespace DiscordCLI
                         break;
                 }
             }
+
+            await Task.CompletedTask;
         }
 
-        protected async void EnterChannel(string args)
+        protected async Task EnterChannel(string args)
         {
             DiscordChannel textChannel;
 
@@ -117,20 +123,23 @@ namespace DiscordCLI
                 return;
             }
 
-            foreach (DiscordMessage message in (await textChannel.GetMessagesAsync(10)).Reverse())
+            try
             {
-                try
+                foreach (DiscordMessage message in (textChannel.GetMessagesAsync(10).Result).Reverse())
                 {
-                    await outputManager.WriteMessage(message, textChannel, GlobalInformation.currentGuild);
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine(ex);
+                    await outputManager.WriteMessage(message, textChannel, GlobalInformation.currentGuild, false);
                 }
             }
+            catch (Exception ex)
+            {
+                ConsoleExt.WriteLine(ex.Message, ConsoleColor.Red);
+                GlobalInformation.currentTextChannel = null;
+            }
+
+            await Task.CompletedTask;
         }
 
-        protected async void EnterDmChannel(string args)
+        protected async Task EnterDmChannel(string args)
         {
             DiscordDmChannel dmChannel;
 
@@ -153,23 +162,26 @@ namespace DiscordCLI
                 return;
             }
 
-            foreach (DiscordMessage message in (await dmChannel.GetMessagesAsync(10)).Reverse())
+            try
             {
-                try
+                foreach (DiscordMessage message in (await dmChannel.GetMessagesAsync(10)).Reverse())
                 {
-                    await outputManager.WriteMessage(message, dmChannel, GlobalInformation.currentGuild);
+                    await outputManager.WriteMessage(message, dmChannel, GlobalInformation.currentGuild, false);
                 }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine(ex);
-                }
+            }
+            catch (Exception ex)
+            {
+                ConsoleExt.WriteLine(ex, ConsoleColor.Red);
+                GlobalInformation.currentTextChannel = null;
             }
         }
 
-        protected void DeleteToken(string args)
+        protected async Task DeleteToken(string args)
         {
             File.Delete(Program.tokenPath);
             Environment.Exit(0);
+
+            await Task.CompletedTask;
         }
     }
 }

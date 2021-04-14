@@ -3,6 +3,8 @@ using Stone_Red_Utilities.ColorConsole;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using System.Timers;
+using System.Threading.Tasks;
 
 namespace DiscordCLI
 {
@@ -10,7 +12,8 @@ namespace DiscordCLI
     {
         private readonly DiscordClient client;
 
-        private readonly Dictionary<string, (string, Action<string>)> CommandsList;
+        private readonly Dictionary<string, (string, Func<string, Task>)> CommandsList;
+        private int cooldown = 0;
 
         public CommandsManager(DiscordClient dicordClient, OutputManager outputManager) : base(dicordClient, outputManager)
         {
@@ -27,19 +30,39 @@ namespace DiscordCLI
                 { "enterc", ("enter channel args:<channel name/index>", EnterChannel) },
                 { "enterd", ("enter DM channel args:<channel name/index>", EnterDmChannel) },
             };
+
+            Timer cooldownTimer = new Timer(1000);
+            cooldownTimer.Elapsed += CooldownTimer_Elapsed;
+            cooldownTimer.Start();
+        }
+
+        private void CooldownTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            if (cooldown > 0)
+                cooldown--;
         }
 
         /// <summary>
         ///  Check the command and return true if the program should exit
         /// </summary>
         /// <param name="input"></param>
-        /// <returns></returns>
-        public bool CheckCommand(string input)
+        /// <returns>exit bool and write override bool</returns>
+        public async Task<(bool, bool)> CheckCommand(string input)
         {
+            cooldown++;
+
+            if (cooldown > 1)
+            {
+                Console.WriteLine();
+                ConsoleExt.WriteLine("You are beeing rate limited!", ConsoleColor.Yellow);
+                ConsoleExt.WriteLine("Wait a few seconds before making another request!", ConsoleColor.Yellow);
+                return (false, true);
+            }
+
             input = input.Trim().ToLower().Replace('\n', '\0');
 
             if (string.IsNullOrWhiteSpace(input))
-                return false;
+                return (false, false);
 
             if (input.StartsWith(InputManager.prefix))
             {
@@ -47,15 +70,16 @@ namespace DiscordCLI
             }
             else if (GlobalInformation.currentTextChannel != null)
             {
+                cooldown++;
                 Console.Write("\r" + new string(' ', Console.WindowWidth));
-                GlobalInformation.currentTextChannel.SendMessageAsync(input);
-                return false;
+                await GlobalInformation.currentTextChannel.SendMessageAsync(input);
+                return (false, false);
             }
 
             Console.WriteLine();
 
             if (input == "exit" || input is null)
-                return true;
+                return (true, false);
 
             string args = input.Contains(" ") ? input[input.IndexOf(" ")..].Trim() : null;
             input = input.Contains(" ") ? input.Substring(0, input.IndexOf(" ")) : input;
@@ -73,13 +97,13 @@ namespace DiscordCLI
             }
             else if (CommandsList.ContainsKey(input))
             {
-                CommandsList[input].Item2(args);
+                await CommandsList[input].Item2(args);
             }
             else
             {
                 ConsoleExt.WriteLine("Command does not exist!", ConsoleColor.Red);
             }
-            return false;
+            return (false, false);
         }
     }
 }
