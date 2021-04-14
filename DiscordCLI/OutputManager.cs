@@ -21,7 +21,7 @@ namespace DiscordCLI
             client = discordClient;
         }
 
-        public async Task WriteMessage(DiscordMessage message, DiscordChannel channel, DiscordGuild guild)
+        public async Task WriteMessage(DiscordMessage message, DiscordChannel channel, DiscordGuild guild, bool writeInfo = true)
         {
             try
             {
@@ -80,9 +80,13 @@ namespace DiscordCLI
 
             WriteTop(string.Empty, Color.White, message);
             DiscordDmChannel dmChannel = GlobalInformation.currentTextChannel as DiscordDmChannel;
-            string infoString = $"\r[{client.CurrentUser.Username}#{client.CurrentUser.Discriminator}] [{(dmChannel is null ? GlobalInformation.currentGuild?.Name : "DMs")}/{(dmChannel is null ? GlobalInformation.currentTextChannel?.Name : string.Join(", ", dmChannel.Recipients.Select(x => x.Username)))}] ==> ";
-            Console.Write(infoString);
-            Console.Write(InputManager.Input);
+
+            if (writeInfo)
+            {
+                string infoString = $"\r[{client.CurrentUser.Username}#{client.CurrentUser.Discriminator}] [{(dmChannel is null ? GlobalInformation.currentGuild?.Name : "DMs")}/{(dmChannel is null ? GlobalInformation.currentTextChannel?.Name : string.Join(", ", dmChannel.Recipients.Select(x => x.Username)))}] ==> ";
+                Console.Write(infoString);
+                Console.Write(InputManager.Input);
+            }
         }
 
         private void WriteTop(string message, Color color, DiscordMessage discordMessage, bool removeText = true, bool newLine = true, string info = null)

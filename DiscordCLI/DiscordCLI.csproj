@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -10,5 +10,4 @@
     <PackageReference Include="DSharpPlus" Version="3.2.3" />
     <PackageReference Include="Stone_Red-C-Sharp-Utilities" Version="1.0.0.2" />
   </ItemGroup>
-
 </Project>
