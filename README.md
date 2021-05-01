@@ -5,7 +5,8 @@
 **Use this software at your own risk!**\
 This isn't directly a selfbot, but Discord may count it as User account automation and this is against their TOS.\
 I guess everything should be fine as long as you don't behave conspicuously but still proceed with caution!\
-Currently there are no known cases where a user got banned for using this software.\
+Currently there are no known cases where a user got banned for using this Discord client but that doesn't mean it will never happen.\
+Don't blame me if you get banned!\
 I will update the above if anything changes!
 
 ## Download
@@ -50,7 +51,7 @@ If you find a missing feature in DiscordCLI that is not listed below please tell
 - Mentions can't be created easily
 - You can't add/remove guilds
 - You can't create/accept friend requests
-- Discord online status not updating\
+- Discord online status not updating
 
 And probably more.
 
