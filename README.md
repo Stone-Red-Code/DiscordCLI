@@ -43,7 +43,7 @@ Releases: https://github.com/Stone-Red-Code/DiscordCLI/releases
   - args: <channel name/index>
 
 ## Limitations
-DiscordCLI doesn't support everything the officil Discord app does.
+DiscordCLI doesn't support everything the official Discord app does.
 If you find a missing feature in DiscordCLI that is not listed below please tell me or create a pull request and update the list below.
 
 ### Current limitation:
