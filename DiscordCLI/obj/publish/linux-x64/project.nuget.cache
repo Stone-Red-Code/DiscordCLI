@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "yMi9toca1+r3kCHkC/us2dGTQ0CXa9jVPUwiDlC9pA/BRrZx1xWGZe5KZUoWRz6zEFyaXRdvxbmGFWARQ0YsFQ==",
+  "dgSpecHash": "CAxW2Uv5l//Ouqxw9eevSw+p9xw+CqA3d9EdOUR4CVFEemqZd4ue+a/6MNZjMZdrW++bwXfv+8QLpkXoanQVhA==",
   "success": true,
   "projectFilePath": "C:\\Users\\David\\Google Drive\\Programmieren\\DiscordCLI\\DiscordCLI\\DiscordCLI.csproj",
   "expectedPackageFiles": [
@@ -127,7 +127,7 @@
     "C:\\Users\\David\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\David\\.nuget\\packages\\microsoft.netcore.app.host.linux-x64\\5.0.4\\microsoft.netcore.app.host.linux-x64.5.0.4.nupkg.sha512"
+    "C:\\Users\\David\\.nuget\\packages\\microsoft.netcore.app.host.linux-x64\\5.0.6\\microsoft.netcore.app.host.linux-x64.5.0.6.nupkg.sha512"
   ],
   "logs": []
 }

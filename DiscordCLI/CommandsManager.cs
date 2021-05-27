@@ -47,7 +47,7 @@ namespace DiscordCLI
         /// </summary>
         /// <param name="input"></param>
         /// <returns>exit bool and write override bool</returns>
-        public async Task<(bool, bool)> CheckCommand(string input)
+        public async Task<(bool, bool)> CheckCommand(string rawInput)
         {
             cooldown++;
 
@@ -59,7 +59,7 @@ namespace DiscordCLI
                 return (false, true);
             }
 
-            input = input.Trim().ToLower().Replace('\n', '\0');
+            string input = rawInput.Trim().ToLower().Replace('\n', '\0');
 
             if (string.IsNullOrWhiteSpace(input))
                 return (false, false);
@@ -72,7 +72,7 @@ namespace DiscordCLI
             {
                 cooldown++;
                 Console.Write("\r" + new string(' ', Console.WindowWidth));
-                await GlobalInformation.currentTextChannel.SendMessageAsync(input);
+                await GlobalInformation.currentTextChannel.SendMessageAsync(rawInput);
                 return (false, false);
             }
 
