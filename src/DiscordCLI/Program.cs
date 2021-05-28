@@ -1,8 +1,9 @@
 ﻿using DSharpPlus;
-using Stone_Red_Utilities.ColorConsole;
 using System.IO;
 using System.Threading.Tasks;
 using System;
+using DSharpPlus.Exceptions;
+using Stone_Red_Utilities.ConsoleExtentions;
 
 namespace DiscordCLI
 {
@@ -46,12 +47,13 @@ namespace DiscordCLI
                 client.MessageCreated += Client_MessageCreated;
 
                 await client.ConnectAsync();
+                ConsoleExt.WriteLine("Welcome to DiscordCLI", ConsoleColor.Green);
             }
             catch (Exception ex)
             {
-                ConsoleExt.WriteLine(ex, ConsoleColor.Red);
+                ConsoleExt.WriteLine(ex.Message, ConsoleColor.Red);
 
-                if (ex.Message.Contains("Authentication failed"))
+                if (ex.InnerException is UnauthorizedException)
                 {
                     File.Delete(tokenPath);
                     token = string.Empty;

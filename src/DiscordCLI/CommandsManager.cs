@@ -1,5 +1,5 @@
 ﻿using DSharpPlus;
-using Stone_Red_Utilities.ColorConsole;
+using Stone_Red_Utilities.ConsoleExtentions;
 using System.Collections.Generic;
 using System.Linq;
 using System;
@@ -23,13 +23,14 @@ namespace DiscordCLI
             {
                 { "exit", ("exits application", null) },
                 { "logout", ("deletes auth token and exits application", DeleteToken) },
+                { "clear", ("clears the console", Clear) },
                 { "guilds", ("lists all guilds you are in", ListGuilds) },
                 { "dms", ("lists all private channels", ListDms) },
                 { "channels", ("lists all channels of guild args:<guild name/index>", ListGuildChannels) },
                 { "enterg", ("enter guild args:<guild name/index>", ListGuildChannels) },
                 { "enterc", ("enter channel args:<channel name/index>", EnterChannel) },
                 { "enterd", ("enter DM channel args:<channel name/index>", EnterDmChannel) },
-                { "userinfo", ("gets information about a user:<user name>", UserInfo) },
+                { "userinfo", ("gets information about a user args:<username>", UserInfo) },
             };
 
             Timer cooldownTimer = new Timer(1000);

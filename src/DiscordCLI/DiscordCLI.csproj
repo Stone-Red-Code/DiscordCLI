@@ -3,11 +3,13 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="ColorMineStandard" Version="1.0.0" />
     <PackageReference Include="DSharpPlus" Version="3.2.3" />
-    <PackageReference Include="Stone_Red-C-Sharp-Utilities" Version="1.0.0.2" />
+    <PackageReference Include="Stone_Red-C-Sharp-Utilities" Version="1.0.2.1" />
   </ItemGroup>
 </Project>

@@ -33,6 +33,10 @@ I will update the above if anything changes!
 
 - deletes auth token and exits application
 
+### clear
+
+- clears the console
+
 ### guilds
 
 - lists all guilds you are in

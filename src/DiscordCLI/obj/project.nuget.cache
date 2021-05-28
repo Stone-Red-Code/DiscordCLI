@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "XLOvAlY87TySZurLo7RL2ezpJBE2tGd1+FsXFkZDwV1NittIw9rcMhOKE+zQq9a72LifKd0qtXSCJ9fmOFQBgA==",
+  "dgSpecHash": "Sd5hpdPX468vitJPajPRcSMeE6uWNGkfdaCwfOPZjTBB+77H8fvWa+ejKX0QBCdfNu4FyA2bZOqgsxhGYcKcVA==",
   "success": true,
   "projectFilePath": "C:\\Users\\David\\Google Drive\\Programmieren\\DiscordCLI\\src\\DiscordCLI\\DiscordCLI.csproj",
   "expectedPackageFiles": [
@@ -29,7 +29,7 @@
     "C:\\Users\\David\\.nuget\\packages\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
-    "C:\\Users\\David\\.nuget\\packages\\stone_red-c-sharp-utilities\\1.0.0.2\\stone_red-c-sharp-utilities.1.0.0.2.nupkg.sha512",
+    "C:\\Users\\David\\.nuget\\packages\\stone_red-c-sharp-utilities\\1.0.2.1\\stone_red-c-sharp-utilities.1.0.2.1.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\system.buffers\\4.3.0\\system.buffers.4.3.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",

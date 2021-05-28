@@ -333,7 +333,7 @@
           }
         }
       },
-      "Stone_Red-C-Sharp-Utilities/1.0.0.2": {
+      "Stone_Red-C-Sharp-Utilities/1.0.2.1": {
         "type": "package",
         "compile": {
           "lib/netstandard2.1/Stone_Red-C-Sharp-Utilities.dll": {}
@@ -2116,17 +2116,17 @@
         "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
       ]
     },
-    "Stone_Red-C-Sharp-Utilities/1.0.0.2": {
-      "sha512": "/oH1XweI6G2VjeXuutq3XhHAPiSpotfPnsRMK0n8BXFOqG85y0AXQGaKiEdhCZZOpLHFrNY8rtLepMgLJrsY9w==",
+    "Stone_Red-C-Sharp-Utilities/1.0.2.1": {
+      "sha512": "QzwH0QvsDiBvCJTFroZBhN/pMEIiz0C8TNkQci+pxCbnjfTtVkxAYsgmlshCl5oHFJh7VYDLcGAULcMBARSb+w==",
       "type": "package",
-      "path": "stone_red-c-sharp-utilities/1.0.0.2",
+      "path": "stone_red-c-sharp-utilities/1.0.2.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
         "lib/netstandard2.1/Stone_Red-C-Sharp-Utilities.dll",
         "lib/netstandard2.1/Stone_Red-C-Sharp-Utilities.xml",
-        "stone_red-c-sharp-utilities.1.0.0.2.nupkg.sha512",
+        "stone_red-c-sharp-utilities.1.0.2.1.nupkg.sha512",
         "stone_red-c-sharp-utilities.nuspec"
       ]
     },
@@ -5871,7 +5871,7 @@
     "net5.0": [
       "ColorMineStandard >= 1.0.0",
       "DSharpPlus >= 3.2.3",
-      "Stone_Red-C-Sharp-Utilities >= 1.0.0.2"
+      "Stone_Red-C-Sharp-Utilities >= 1.0.2.1"
     ]
   },
   "packageFolders": {
@@ -5931,7 +5931,7 @@
           },
           "Stone_Red-C-Sharp-Utilities": {
             "target": "Package",
-            "version": "[1.0.0.2, )"
+            "version": "[1.0.2.1, )"
           }
         },
         "imports": [

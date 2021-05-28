@@ -1,9 +1,8 @@
 ﻿using DSharpPlus.Entities;
 using DSharpPlus;
-using Stone_Red_Utilities.ColorConsole;
+using Stone_Red_Utilities.ConsoleExtentions;
 using Stone_Red_Utilities.StringExtentions;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System;
@@ -213,9 +212,12 @@ namespace DiscordCLI
 
             if (discordUser is not null)
             {
+                string status = discordUser.Presence?.Status.ToString();
+                status ??= "N/A";
+
                 string infoString =
                     $"Username: {discordUser.Username}#{discordUser.Discriminator}" + Environment.NewLine +
-                    $"Status: {discordUser.Presence?.Status}" + Environment.NewLine +
+                    $"Status: {status}" + Environment.NewLine +
                     $"Created at: {discordUser.CreationTimestamp}" + Environment.NewLine +
                     $"ID: {discordUser.Id}" + Environment.NewLine +
                     $"Bot: {discordUser.IsBot}";
@@ -226,6 +228,12 @@ namespace DiscordCLI
                 ConsoleExt.WriteLine("User not found!", ConsoleColor.Red);
             }
 
+            await Task.CompletedTask;
+        }
+
+        protected async Task Clear(string args)
+        {
+            Console.Clear();
             await Task.CompletedTask;
         }
     }

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System;
 using DSharpPlus.Entities;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace DiscordCLI
 {
@@ -10,6 +11,7 @@ namespace DiscordCLI
     {
         private readonly CommandsManager commandsManager;
         private readonly DiscordClient client;
+        private readonly List<string> previousInputs = new List<string>();
         public const string prefix = ">";
         public string Input { get; private set; } = string.Empty;
 
@@ -21,6 +23,7 @@ namespace DiscordCLI
 
         public async Task ReadInput()
         {
+            int inputListIndex = 0;
             bool exit = false;
             bool printOverride = false;
             string lastInput = prefix;
@@ -44,6 +47,26 @@ namespace DiscordCLI
                     {
                         Input = Input.Remove(Input.Length - 1);
                     }
+                    else if (keyInfo.Key == ConsoleKey.UpArrow)
+                    {
+                        if (previousInputs.Count > 0)
+                            Input = previousInputs[previousInputs.Count - inputListIndex - 1];
+
+                        if (inputListIndex < previousInputs.Count - 1)
+                            inputListIndex++;
+                        Console.CursorLeft = infoString.Length - 1;
+                        Console.Write(Input + new string(' ', Console.WindowWidth - infoString.Length - 1));
+                    }
+                    else if (keyInfo.Key == ConsoleKey.DownArrow)
+                    {
+                        if (previousInputs.Count > 0)
+                            Input = previousInputs[previousInputs.Count - inputListIndex - 1];
+
+                        if (inputListIndex > 0)
+                            inputListIndex--;
+                        Console.CursorLeft = infoString.Length - 1;
+                        Console.Write(Input + new string(' ', Console.WindowWidth - infoString.Length - 1));
+                    }
 
                     Console.Write(keyInfo.KeyChar);
                     if (keyInfo.Key == ConsoleKey.Backspace)
@@ -53,8 +76,14 @@ namespace DiscordCLI
                 } while (keyInfo.Key != ConsoleKey.Enter);
 
                 if (GlobalInformation.currentTextChannel == null && !Input.StartsWith(prefix))
+                {
+                    if (previousInputs.Count > 10)
+                        previousInputs.RemoveAt(0);
+                    previousInputs.Add(new string(Input));
                     Input = prefix + Input;
+                }
 
+                inputListIndex = 0;
                 lastInput = new string(Input);
                 Input = string.Empty;
 

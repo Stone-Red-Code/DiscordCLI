@@ -2,7 +2,7 @@
 using ColorMine.ColorSpaces;
 using DSharpPlus.Entities;
 using DSharpPlus;
-using Stone_Red_Utilities.ColorConsole;
+using Stone_Red_Utilities.ConsoleExtentions;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -122,8 +122,6 @@ namespace DiscordCLI
                         string part2 = words[i].Substring(index1, index2 - index1 + 1);
                         string part3 = words[i].Substring(index2 + 1, words[i].Length - index2 - 1);
 
-                        Debug.WriteLine(words[i] + "/" + i);
-                        Debug.WriteLine(part1 + "/" + part2 + "/" + part3);
                         words[i] = part2;
                         if (!string.IsNullOrEmpty(part1))
                         {

@@ -10,7 +10,7 @@
         "dependencies": {
           "ColorMineStandard": "1.0.0",
           "DSharpPlus": "3.2.3",
-          "Stone_Red-C-Sharp-Utilities": "1.0.0.2"
+          "Stone_Red-C-Sharp-Utilities": "1.0.2.1"
         },
         "runtime": {
           "DiscordCLI.dll": {}
@@ -186,11 +186,11 @@
       "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
       "runtime.ubuntu.16.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
       "runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
-      "Stone_Red-C-Sharp-Utilities/1.0.0.2": {
+      "Stone_Red-C-Sharp-Utilities/1.0.2.1": {
         "runtime": {
           "lib/netstandard2.1/Stone_Red-C-Sharp-Utilities.dll": {
-            "assemblyVersion": "1.0.0.2",
-            "fileVersion": "1.0.0.2"
+            "assemblyVersion": "1.0.2.1",
+            "fileVersion": "1.0.2.1"
           }
         }
       },
@@ -1173,12 +1173,12 @@
       "path": "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl/4.3.2",
       "hashPath": "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512"
     },
-    "Stone_Red-C-Sharp-Utilities/1.0.0.2": {
+    "Stone_Red-C-Sharp-Utilities/1.0.2.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-/oH1XweI6G2VjeXuutq3XhHAPiSpotfPnsRMK0n8BXFOqG85y0AXQGaKiEdhCZZOpLHFrNY8rtLepMgLJrsY9w==",
-      "path": "stone_red-c-sharp-utilities/1.0.0.2",
-      "hashPath": "stone_red-c-sharp-utilities.1.0.0.2.nupkg.sha512"
+      "sha512": "sha512-QzwH0QvsDiBvCJTFroZBhN/pMEIiz0C8TNkQci+pxCbnjfTtVkxAYsgmlshCl5oHFJh7VYDLcGAULcMBARSb+w==",
+      "path": "stone_red-c-sharp-utilities/1.0.2.1",
+      "hashPath": "stone_red-c-sharp-utilities.1.0.2.1.nupkg.sha512"
     },
     "System.AppContext/4.3.0": {
       "type": "package",
