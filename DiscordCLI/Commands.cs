@@ -1,6 +1,7 @@
 ﻿using DSharpPlus.Entities;
 using DSharpPlus;
 using Stone_Red_Utilities.ColorConsole;
+using Stone_Red_Utilities.StringExtentions;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -87,7 +88,7 @@ namespace DiscordCLI
                         break;
 
                     case ChannelType.Text:
-                        Console.WriteLine($"    {index}. {channel.Name}");
+                        Console.WriteLine($"{index}. {channel.Name}");
                         index++;
                         break;
                 }
@@ -180,6 +181,50 @@ namespace DiscordCLI
         {
             File.Delete(Program.tokenPath);
             Environment.Exit(0);
+
+            await Task.CompletedTask;
+        }
+
+        protected async Task UserInfo(string userName)
+        {
+            if (GlobalInformation.currentGuild is null)
+            {
+                ConsoleExt.WriteLine("You are not in a guild!", ConsoleColor.Red);
+                return;
+            }
+
+            if (userName is null)
+            {
+                ConsoleExt.WriteLine("User not found!", ConsoleColor.Red);
+                return;
+            }
+
+            DiscordUser discordUser = GlobalInformation.currentGuild?.Members?.FirstOrDefault(user => user.Username.EqualsIgnoreSpacesAndCase(userName));
+
+            if (discordUser is null)
+            {
+                discordUser = GlobalInformation.currentGuild?.Members?.FirstOrDefault(user => $"{user.Username}#{user.Discriminator}".EqualsIgnoreSpacesAndCase(userName));
+            }
+
+            if (discordUser is null)
+            {
+                discordUser = GlobalInformation.currentGuild?.Members?.FirstOrDefault(user => $"{user.Nickname}".EqualsIgnoreSpacesAndCase(userName));
+            }
+
+            if (discordUser is not null)
+            {
+                string infoString =
+                    $"Username: {discordUser.Username}#{discordUser.Discriminator}" + Environment.NewLine +
+                    $"Status: {discordUser.Presence?.Status}" + Environment.NewLine +
+                    $"Created at: {discordUser.CreationTimestamp}" + Environment.NewLine +
+                    $"ID: {discordUser.Id}" + Environment.NewLine +
+                    $"Bot: {discordUser.IsBot}";
+                Console.WriteLine(infoString);
+            }
+            else
+            {
+                ConsoleExt.WriteLine("User not found!", ConsoleColor.Red);
+            }
 
             await Task.CompletedTask;
         }

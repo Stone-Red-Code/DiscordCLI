@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
+using System.Collections.Generic;
 
 namespace DiscordCLI
 {
@@ -66,11 +67,13 @@ namespace DiscordCLI
                     }
 
                     if (embed.Fields is not null)
+                    {
                         foreach (DiscordEmbedField field in embed.Fields)
                         {
                             WriteTop(">>> ", Color.FromArgb(embed.Color.Value), message, true, false);
                             WriteTop($"{field.Name}{Environment.NewLine}{field.Value}", Color.White, message, false);
                         }
+                    }
                 }
             }
             catch (Exception ex)
@@ -99,14 +102,39 @@ namespace DiscordCLI
             if (removeText)
                 Console.Write('\r' + new string(' ', Console.WindowWidth) + '\r');
 
-            string[] words = message.Split(' ');
-            for (int i = 0; i < words.Length; i++)
+            List<string> words = message.Replace("\n", " %<newLine>%").Split(' ').ToList();
+            for (int i = 0; i < words.Count; i++)
             {
                 ConsoleColor mentionColor = ConsoleColor.Black;
 
                 if (IsUri(words[i]))
                 {
                     mentionColor = ConsoleColor.DarkCyan;
+                }
+
+                if (words[i].Contains("<") && words[i].Contains(">") && !(words[i].StartsWith("<") && words[i].EndsWith(">")))
+                {
+                    int index1 = words[i].IndexOf("<");
+                    int index2 = words[i].IndexOf(">");
+                    if (index1 < index2)
+                    {
+                        string part1 = words[i].Substring(0, index1);
+                        string part2 = words[i].Substring(index1, index2 - index1 + 1);
+                        string part3 = words[i].Substring(index2 + 1, words[i].Length - index2 - 1);
+
+                        Debug.WriteLine(words[i] + "/" + i);
+                        Debug.WriteLine(part1 + "/" + part2 + "/" + part3);
+                        words[i] = part2;
+                        if (!string.IsNullOrEmpty(part1))
+                        {
+                            words.Insert(i, part1);
+                        }
+
+                        if (!string.IsNullOrEmpty(part3))
+                        {
+                            words.Insert(i + (string.IsNullOrEmpty(part1) ? 1 : 2), part3);
+                        }
+                    }
                 }
 
                 foreach (DiscordUser user in discordMessage.MentionedUsers)
@@ -122,7 +150,16 @@ namespace DiscordCLI
                     else
                     {
                         if (words[i].Contains("<@") && words[i].Contains('>'))
-                            mentionColor = ConsoleColor.Blue;
+                        {
+                            if (ulong.TryParse(words[i].Replace("!", string.Empty).Replace("<@", string.Empty).Replace(">", string.Empty), out ulong id))
+                            {
+                                DiscordUser discordUser = client.GetUserAsync(id).Result;
+                                Console.WriteLine(discordUser is null);
+
+                                words[i] = words[i].Replace("<@!", "<@").Replace(discordUser.Mention, $"@{discordUser.Username}#{discordUser.Discriminator}");
+                                mentionColor = ConsoleColor.Blue;
+                            }
+                        }
                     }
                 }
 
@@ -149,7 +186,7 @@ namespace DiscordCLI
                             }
                     }
 
-                ConsoleExt.Write(words[i] + " ", mentionColor == ConsoleColor.Black ? consoleColor : mentionColor);
+                ConsoleExt.Write(words[i].Replace("%<newLine>%", "\n") + " ", mentionColor == ConsoleColor.Black ? consoleColor : mentionColor);
             }
 
             ConsoleExt.Write(info, ConsoleColor.DarkGray);

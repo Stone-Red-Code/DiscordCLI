@@ -29,6 +29,7 @@ namespace DiscordCLI
                 { "enterg", ("enter guild args:<guild name/index>", ListGuildChannels) },
                 { "enterc", ("enter channel args:<channel name/index>", EnterChannel) },
                 { "enterd", ("enter DM channel args:<channel name/index>", EnterDmChannel) },
+                { "userinfo", ("gets information about a user:<user name>", UserInfo) },
             };
 
             Timer cooldownTimer = new Timer(1000);
