@@ -5882,11 +5882,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\David\\Google Drive\\Programmieren\\DiscordCLI\\DiscordCLI\\DiscordCLI.csproj",
+      "projectUniqueName": "C:\\Users\\David\\Google Drive\\Programmieren\\DiscordCLI\\src\\DiscordCLI\\DiscordCLI.csproj",
       "projectName": "DiscordCLI",
-      "projectPath": "C:\\Users\\David\\Google Drive\\Programmieren\\DiscordCLI\\DiscordCLI\\DiscordCLI.csproj",
+      "projectPath": "C:\\Users\\David\\Google Drive\\Programmieren\\DiscordCLI\\src\\DiscordCLI\\DiscordCLI.csproj",
       "packagesPath": "C:\\Users\\David\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\David\\Google Drive\\Programmieren\\DiscordCLI\\DiscordCLI\\obj\\",
+      "outputPath": "C:\\Users\\David\\Google Drive\\Programmieren\\DiscordCLI\\src\\DiscordCLI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
