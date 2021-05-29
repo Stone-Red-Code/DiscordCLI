@@ -79,7 +79,10 @@ namespace DiscordCLI
                 {
                     if (previousInputs.Count > 10)
                         previousInputs.RemoveAt(0);
-                    previousInputs.Add(new string(Input));
+
+                    if (previousInputs.Count == 0 || previousInputs[previousInputs.Count - 1] != Input)
+                        previousInputs.Add(new string(Input));
+
                     Input = prefix + Input;
                 }
 

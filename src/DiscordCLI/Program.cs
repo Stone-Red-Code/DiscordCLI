@@ -4,25 +4,40 @@ using System.Threading.Tasks;
 using System;
 using DSharpPlus.Exceptions;
 using Stone_Red_Utilities.ConsoleExtentions;
+using System.Reflection;
+using AlwaysUpToDate;
+using System.Runtime.InteropServices;
 
 namespace DiscordCLI
 {
     internal class Program
     {
-        public static void Main() => new Program().MainAsync().GetAwaiter().GetResult();
-
-        private DiscordClient client;
-        private InputManager inputManager;
-        private OutputManager outputManager;
-        private CommandsManager commandsManager;
-
         public const string tokenPath = "token.txt";
 
-        public async Task MainAsync()
+        private DiscordClient client;
+        private CommandsManager commandsManager;
+        private InputManager inputManager;
+        private OutputManager outputManager;
+
+        private Updater updater = new Updater(new TimeSpan(0), "https://github.com/Stone-Red-Code/DiscordCLI/tree/develop/update/updateInfo.json", "./", true);
+
+        public static void Main() => new Program().Setup().GetAwaiter().GetResult();
+
+        private async Task Setup()
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
+            updater.UpdateAvailible += Updater_UpdateAvailible;
+            updater.NoUpdateAvailible += Updater_NoUpdateAvailible;
+            updater.ProgressChanged += Updater_ProgressChanged;
+            updater.Start();
+
+            await Task.Delay(-1);
+        }
+
+        private async Task Start()
+        {
             string token = string.Empty;
             if (File.Exists(tokenPath))
                 token = File.ReadAllText(tokenPath);
@@ -68,6 +83,23 @@ namespace DiscordCLI
             outputManager.InputManager = inputManager;
 
             await inputManager.ReadInput();
+        }
+
+        private async void Updater_NoUpdateAvailible()
+        {
+            await Start();
+        }
+
+        private void Updater_ProgressChanged(long? totalFileSize, long totalBytesDownloaded, double? progressPercentage)
+        {
+            Console.CursorLeft = 0;
+            ConsoleExt.Write($"Downloading Update: {totalBytesDownloaded}/{totalFileSize} {progressPercentage}", ConsoleColor.Yellow);
+        }
+
+        private void Updater_UpdateAvailible(string version, string additionalInformation)
+        {
+            Console.WriteLine($"New version avalible! {version}");
+            updater.Start();
         }
 
         private async Task Client_MessageCreated(DSharpPlus.EventArgs.MessageCreateEventArgs e)

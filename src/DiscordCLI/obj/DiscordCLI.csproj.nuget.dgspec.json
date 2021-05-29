@@ -46,6 +46,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "AlwaysUpToDate": {
+              "target": "Package",
+              "version": "[1.0.0.3, )"
+            },
             "ColorMineStandard": {
               "target": "Package",
               "version": "[1.0.0, )"

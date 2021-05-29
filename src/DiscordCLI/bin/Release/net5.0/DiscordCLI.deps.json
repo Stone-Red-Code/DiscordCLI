@@ -8,12 +8,24 @@
     ".NETCoreApp,Version=v5.0": {
       "DiscordCLI/1.0.0": {
         "dependencies": {
+          "AlwaysUpToDate": "1.0.0.3",
           "ColorMineStandard": "1.0.0",
           "DSharpPlus": "3.2.3",
-          "Stone_Red-C-Sharp-Utilities": "1.0.0.2"
+          "Stone_Red-C-Sharp-Utilities": "1.0.2.1"
         },
         "runtime": {
           "DiscordCLI.dll": {}
+        }
+      },
+      "AlwaysUpToDate/1.0.0.3": {
+        "dependencies": {
+          "System.Text.Json": "5.0.2"
+        },
+        "runtime": {
+          "lib/netstandard2.1/AlwaysUpToDate.dll": {
+            "assemblyVersion": "1.0.0.3",
+            "fileVersion": "1.0.0.3"
+          }
         }
       },
       "ColorMineStandard/1.0.0": {
@@ -186,11 +198,11 @@
       "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
       "runtime.ubuntu.16.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
       "runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
-      "Stone_Red-C-Sharp-Utilities/1.0.0.2": {
+      "Stone_Red-C-Sharp-Utilities/1.0.2.1": {
         "runtime": {
           "lib/netstandard2.1/Stone_Red-C-Sharp-Utilities.dll": {
-            "assemblyVersion": "1.0.0.2",
-            "fileVersion": "1.0.0.2"
+            "assemblyVersion": "1.0.2.1",
+            "fileVersion": "1.0.2.1"
           }
         }
       },
@@ -903,6 +915,14 @@
           "System.Text.Encoding": "4.3.0"
         }
       },
+      "System.Text.Json/5.0.2": {
+        "runtime": {
+          "lib/netcoreapp3.0/System.Text.Json.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.521.16609"
+          }
+        }
+      },
       "System.Text.RegularExpressions/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
@@ -997,6 +1017,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AlwaysUpToDate/1.0.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vJCFkNoEa4cnf4Bck20k0DaPsLk1kgP8uH2B2dbOSpXv+kzVzLAaUsPWO1cm3Yo8bs3Z8JwG3J4xz4AcRzh3yg==",
+      "path": "alwaysuptodate/1.0.0.3",
+      "hashPath": "alwaysuptodate.1.0.0.3.nupkg.sha512"
     },
     "ColorMineStandard/1.0.0": {
       "type": "package",
@@ -1173,12 +1200,12 @@
       "path": "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl/4.3.2",
       "hashPath": "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512"
     },
-    "Stone_Red-C-Sharp-Utilities/1.0.0.2": {
+    "Stone_Red-C-Sharp-Utilities/1.0.2.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-/oH1XweI6G2VjeXuutq3XhHAPiSpotfPnsRMK0n8BXFOqG85y0AXQGaKiEdhCZZOpLHFrNY8rtLepMgLJrsY9w==",
-      "path": "stone_red-c-sharp-utilities/1.0.0.2",
-      "hashPath": "stone_red-c-sharp-utilities.1.0.0.2.nupkg.sha512"
+      "sha512": "sha512-QzwH0QvsDiBvCJTFroZBhN/pMEIiz0C8TNkQci+pxCbnjfTtVkxAYsgmlshCl5oHFJh7VYDLcGAULcMBARSb+w==",
+      "path": "stone_red-c-sharp-utilities/1.0.2.1",
+      "hashPath": "stone_red-c-sharp-utilities.1.0.2.1.nupkg.sha512"
     },
     "System.AppContext/4.3.0": {
       "type": "package",
@@ -1613,6 +1640,13 @@
       "sha512": "sha512-YVMK0Bt/A43RmwizJoZ22ei2nmrhobgeiYwFzC4YAN+nue8RF6djXDMog0UCn+brerQoYVyaS+ghy9P/MUVcmw==",
       "path": "system.text.encoding.extensions/4.3.0",
       "hashPath": "system.text.encoding.extensions.4.3.0.nupkg.sha512"
+    },
+    "System.Text.Json/5.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-I47dVIGiV6SfAyppphxqupertT/5oZkYLDCX6vC3HpOI4ZLjyoKAreUoem2ie6G0RbRuFrlqz/PcTQjfb2DOfQ==",
+      "path": "system.text.json/5.0.2",
+      "hashPath": "system.text.json.5.0.2.nupkg.sha512"
     },
     "System.Text.RegularExpressions/4.3.0": {
       "type": "package",

@@ -3,13 +3,18 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
+    <AssemblyVersion>0.0.3.1</AssemblyVersion>
+    <FileVersion>0.0.3.1</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AlwaysUpToDate" Version="1.0.0.3" />
     <PackageReference Include="ColorMineStandard" Version="1.0.0" />
     <PackageReference Include="DSharpPlus" Version="3.2.3" />
     <PackageReference Include="Stone_Red-C-Sharp-Utilities" Version="1.0.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
 </Project>

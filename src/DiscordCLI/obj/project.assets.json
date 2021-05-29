@@ -2,6 +2,18 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "AlwaysUpToDate/1.0.0.3": {
+        "type": "package",
+        "dependencies": {
+          "System.Text.Json": "5.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.1/AlwaysUpToDate.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/AlwaysUpToDate.dll": {}
+        }
+      },
       "ColorMineStandard/1.0.0": {
         "type": "package",
         "compile": {
@@ -1526,6 +1538,15 @@
           "ref/netstandard1.3/System.Text.Encoding.Extensions.dll": {}
         }
       },
+      "System.Text.Json/5.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.0/System.Text.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.Text.Json.dll": {}
+        }
+      },
       "System.Text.RegularExpressions/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1673,6 +1694,19 @@
     }
   },
   "libraries": {
+    "AlwaysUpToDate/1.0.0.3": {
+      "sha512": "vJCFkNoEa4cnf4Bck20k0DaPsLk1kgP8uH2B2dbOSpXv+kzVzLAaUsPWO1cm3Yo8bs3Z8JwG3J4xz4AcRzh3yg==",
+      "type": "package",
+      "path": "alwaysuptodate/1.0.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "alwaysuptodate.1.0.0.3.nupkg.sha512",
+        "alwaysuptodate.nuspec",
+        "lib/netstandard2.1/AlwaysUpToDate.dll"
+      ]
+    },
     "ColorMineStandard/1.0.0": {
       "sha512": "sR4zFOJ6wT0bFgjivk4plQrO3q7j/ew6aKJY48ssNoXBvq7jiLB9PtuS4UOGqOcxEM571QSJKeNU3GmKFXc/dw==",
       "type": "package",
@@ -5350,6 +5384,28 @@
         "system.text.encoding.extensions.nuspec"
       ]
     },
+    "System.Text.Json/5.0.2": {
+      "sha512": "I47dVIGiV6SfAyppphxqupertT/5oZkYLDCX6vC3HpOI4ZLjyoKAreUoem2ie6G0RbRuFrlqz/PcTQjfb2DOfQ==",
+      "type": "package",
+      "path": "system.text.json/5.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Text.Json.dll",
+        "lib/net461/System.Text.Json.xml",
+        "lib/netcoreapp3.0/System.Text.Json.dll",
+        "lib/netcoreapp3.0/System.Text.Json.xml",
+        "lib/netstandard2.0/System.Text.Json.dll",
+        "lib/netstandard2.0/System.Text.Json.xml",
+        "system.text.json.5.0.2.nupkg.sha512",
+        "system.text.json.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "System.Text.RegularExpressions/4.3.0": {
       "sha512": "RpT2DA+L660cBt1FssIE9CAGpLFdFPuheB7pLpKpn6ZXNby7jDERe8Ua/Ne2xGiwLVG2JOqziiaVCGDon5sKFA==",
       "type": "package",
@@ -5869,6 +5925,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "AlwaysUpToDate >= 1.0.0.3",
       "ColorMineStandard >= 1.0.0",
       "DSharpPlus >= 3.2.3",
       "Stone_Red-C-Sharp-Utilities >= 1.0.2.1"
@@ -5921,6 +5978,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "AlwaysUpToDate": {
+            "target": "Package",
+            "version": "[1.0.0.3, )"
+          },
           "ColorMineStandard": {
             "target": "Package",
             "version": "[1.0.0, )"

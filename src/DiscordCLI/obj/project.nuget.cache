@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Sd5hpdPX468vitJPajPRcSMeE6uWNGkfdaCwfOPZjTBB+77H8fvWa+ejKX0QBCdfNu4FyA2bZOqgsxhGYcKcVA==",
+  "dgSpecHash": "xN3R9JWvaILB1RFf8ZjeIPjgIebiqc6JTEiUoqzxRfWNpvvikqipFUp/rsvByUHMKTc8/bP4JPTnC3EWatCf8w==",
   "success": true,
   "projectFilePath": "C:\\Users\\David\\Google Drive\\Programmieren\\DiscordCLI\\src\\DiscordCLI\\DiscordCLI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\David\\.nuget\\packages\\alwaysuptodate\\1.0.0.3\\alwaysuptodate.1.0.0.3.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\colorminestandard\\1.0.0\\colorminestandard.1.0.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\dsharpplus\\3.2.3\\dsharpplus.3.2.3.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\microsoft.csharp\\4.3.0\\microsoft.csharp.4.3.0.nupkg.sha512",
@@ -92,6 +93,7 @@
     "C:\\Users\\David\\.nuget\\packages\\system.security.principal.windows\\4.3.0\\system.security.principal.windows.4.3.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\system.text.encoding.extensions\\4.3.0\\system.text.encoding.extensions.4.3.0.nupkg.sha512",
+    "C:\\Users\\David\\.nuget\\packages\\system.text.json\\5.0.2\\system.text.json.5.0.2.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\system.text.regularexpressions\\4.3.0\\system.text.regularexpressions.4.3.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
