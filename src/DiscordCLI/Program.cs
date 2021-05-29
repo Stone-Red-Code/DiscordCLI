@@ -19,7 +19,11 @@ namespace DiscordCLI
         private InputManager inputManager;
         private OutputManager outputManager;
 
-        private Updater updater = new Updater(new TimeSpan(0), "https://github.com/Stone-Red-Code/DiscordCLI/tree/develop/update/updateInfo.json", "./", true);
+#if DEBUG
+        private Updater updater = new Updater(new TimeSpan(0), "https://raw.githubusercontent.com/Stone-Red-Code/DiscordCLI/develop/update/updateInfo.json", "./", true);
+#else
+        private Updater updater = new Updater(new TimeSpan(0), "https://raw.githubusercontent.com/Stone-Red-Code/DiscordCLI/main/update/updateInfo.json", "./", true);
+#endif
 
         public static void Main() => new Program().Setup().GetAwaiter().GetResult();
 
@@ -31,8 +35,8 @@ namespace DiscordCLI
             updater.UpdateAvailible += Updater_UpdateAvailible;
             updater.NoUpdateAvailible += Updater_NoUpdateAvailible;
             updater.ProgressChanged += Updater_ProgressChanged;
-            updater.Start();
 
+            updater.Start();
             await Task.Delay(-1);
         }
 
@@ -93,13 +97,13 @@ namespace DiscordCLI
         private void Updater_ProgressChanged(long? totalFileSize, long totalBytesDownloaded, double? progressPercentage)
         {
             Console.CursorLeft = 0;
-            ConsoleExt.Write($"Downloading Update: {totalBytesDownloaded}/{totalFileSize} {progressPercentage}", ConsoleColor.Yellow);
+            ConsoleExt.WriteLine($"Downloading Update: {progressPercentage}% {totalBytesDownloaded}/{totalFileSize}", ConsoleColor.Yellow);
         }
 
         private void Updater_UpdateAvailible(string version, string additionalInformation)
         {
             Console.WriteLine($"New version avalible! {version}");
-            updater.Start();
+            updater.Update();
         }
 
         private async Task Client_MessageCreated(DSharpPlus.EventArgs.MessageCreateEventArgs e)
