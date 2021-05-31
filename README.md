@@ -15,7 +15,7 @@ I will update the above if anything changes!
 
 1. [Download]("https://github.com/Stone-Red-Code/DiscordCLI/releases
 ) one of the releases
-2. Execute the `DiscordCLI.exe` file (also works on Linux)
+2. Execute the `DiscordCLI.exe` file on windows and run `dotnet DiscordCLI.dll` on linux
 3. Enter your [User Token](https://github.com/Tyrrrz/DiscordChatExporter/wiki/Obtaining-Token-and-Channel-IDs#how-to-get-a-user-token">)
 4. Enter one of the commands below
 
