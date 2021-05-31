@@ -21,6 +21,13 @@ namespace DiscordCLI
             commandsManager = commandsMan;
         }
 
+        private static IEnumerable<Enum> GetFlags(Enum input)
+        {
+            foreach (Enum value in Enum.GetValues(input.GetType()))
+                if (input.HasFlag(value))
+                    yield return value;
+        }
+
         public async Task ReadInput()
         {
             int inputListIndex = 0;
@@ -43,29 +50,33 @@ namespace DiscordCLI
                     if (!char.IsControl(keyInfo.KeyChar))
                         Input += keyInfo.KeyChar.ToString();
 
-                    if (keyInfo.Key == ConsoleKey.Backspace && Input.Length > 0)
+                    System.Diagnostics.Debug.WriteLine(inputListIndex);
+                    System.Diagnostics.Debug.WriteLine(previousInputs.Count - inputListIndex - 1);
+                    if (keyInfo.KeyChar == (int)ConsoleKey.Backspace && Input.Length > 0)
                     {
                         Input = Input.Remove(Input.Length - 1);
                     }
                     else if (keyInfo.Key == ConsoleKey.UpArrow)
                     {
+                        int previousLength = Input.Length;
                         if (previousInputs.Count > 0)
                             Input = previousInputs[previousInputs.Count - inputListIndex - 1];
 
-                        if (inputListIndex < previousInputs.Count - 1)
+                        if (inputListIndex < previousInputs.Count - 2)
                             inputListIndex++;
                         Console.CursorLeft = infoString.Length - 1;
-                        Console.Write(Input + new string(' ', Console.WindowWidth - infoString.Length - 1));
+                        Console.Write(Input + new string(' ', Math.Max(previousLength - Input.Length, 0)));
                     }
                     else if (keyInfo.Key == ConsoleKey.DownArrow)
                     {
+                        int previousLength = Input.Length;
                         if (previousInputs.Count > 0)
                             Input = previousInputs[previousInputs.Count - inputListIndex - 1];
 
                         if (inputListIndex > 0)
                             inputListIndex--;
                         Console.CursorLeft = infoString.Length - 1;
-                        Console.Write(Input + new string(' ', Console.WindowWidth - infoString.Length - 1));
+                        Console.Write(Input + new string(' ', Math.Max(previousLength - Input.Length, 0)));
                     }
 
                     Console.Write(keyInfo.KeyChar);

@@ -5937,7 +5937,7 @@
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
-    "version": "0.0.4",
+    "version": "0.0.4.1",
     "restore": {
       "projectUniqueName": "C:\\Users\\David\\Google Drive\\Programmieren\\DiscordCLI\\src\\DiscordCLI\\DiscordCLI.csproj",
       "projectName": "DiscordCLI",
