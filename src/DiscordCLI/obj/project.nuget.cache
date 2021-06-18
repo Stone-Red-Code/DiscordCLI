@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "sDgX8qm8cSHJ0TDjQxLzYI0BGqd9ZbIQHKZL5+1wc6kCWhLM7an1Y8nmm5tii35pK9ispeNnJ+CPKEl6Y5a2Cg==",
+  "dgSpecHash": "Groh7GZvG+C+TVKGmTmlyGLnDsI8GkKwOuPKx6XoRXzBdjvcPsSajwrp+90XLCmwEHR7FAimUXspTiI5YLbXRA==",
   "success": true,
   "projectFilePath": "C:\\Users\\David\\Google Drive\\Programmieren\\DiscordCLI\\src\\DiscordCLI\\DiscordCLI.csproj",
   "expectedPackageFiles": [
@@ -102,7 +102,8 @@
     "C:\\Users\\David\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\David\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512"
+    "C:\\Users\\David\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\David\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.5\\microsoft.netcore.app.host.win-x64.5.0.5.nupkg.sha512"
   ],
   "logs": []
 }
