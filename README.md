@@ -76,7 +76,7 @@ I will update the above if anything changes!
 DiscordCLI doesn't support everything the official Discord app does.
 If you find a missing feature in DiscordCLI that is not listed below please tell me or create a pull request and update the list below.
 
-### Current limitation
+### Current limitations
 
 - No voice support
 - Mentions can't be created easily
