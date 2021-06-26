@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net5.0": {
-      "AlwaysUpToDate/1.0.0.3": {
+      "AlwaysUpToDate/1.0.0.4": {
         "type": "package",
         "dependencies": {
           "System.Text.Json": "5.0.2"
@@ -1694,15 +1694,15 @@
     }
   },
   "libraries": {
-    "AlwaysUpToDate/1.0.0.3": {
-      "sha512": "vJCFkNoEa4cnf4Bck20k0DaPsLk1kgP8uH2B2dbOSpXv+kzVzLAaUsPWO1cm3Yo8bs3Z8JwG3J4xz4AcRzh3yg==",
+    "AlwaysUpToDate/1.0.0.4": {
+      "sha512": "A/9hqxN8bKsambpkv6klWlRNFZ4gt5bQeO0ciBSx/tYrD6guTU8KzNNdjuvKV7AEBTObbchbEpr+kbC1/JpqYA==",
       "type": "package",
-      "path": "alwaysuptodate/1.0.0.3",
+      "path": "alwaysuptodate/1.0.0.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
-        "alwaysuptodate.1.0.0.3.nupkg.sha512",
+        "alwaysuptodate.1.0.0.4.nupkg.sha512",
         "alwaysuptodate.nuspec",
         "lib/netstandard2.1/AlwaysUpToDate.dll"
       ]
@@ -5925,7 +5925,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "AlwaysUpToDate >= 1.0.0.3",
+      "AlwaysUpToDate >= 1.0.0.4",
       "ColorMineStandard >= 1.0.0",
       "DSharpPlus >= 3.2.3",
       "Stone_Red-C-Sharp-Utilities >= 1.0.2.1"
@@ -5933,8 +5933,7 @@
   },
   "packageFolders": {
     "C:\\Users\\David\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "0.0.4",
@@ -5946,20 +5945,19 @@
       "outputPath": "C:\\Users\\David\\Google Drive\\Programmieren\\DiscordCLI\\src\\DiscordCLI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
         "C:\\Users\\David\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\David\\AppData\\Roaming\\Cosmos User Kit\\packages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -5980,7 +5978,7 @@
         "dependencies": {
           "AlwaysUpToDate": {
             "target": "Package",
-            "version": "[1.0.0.3, )"
+            "version": "[1.0.0.4, )"
           },
           "ColorMineStandard": {
             "target": "Package",
@@ -6005,18 +6003,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[5.0.5, 5.0.5]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.5.21302.13\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

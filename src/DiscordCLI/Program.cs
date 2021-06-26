@@ -35,6 +35,7 @@ namespace DiscordCLI
             updater.UpdateAvailible += Updater_UpdateAvailible;
             updater.NoUpdateAvailible += Updater_NoUpdateAvailible;
             updater.ProgressChanged += Updater_ProgressChanged;
+            updater.OnException += Updater_OnException;
 
             updater.Start();
             await Task.Delay(-1);
@@ -104,6 +105,12 @@ namespace DiscordCLI
         {
             Console.WriteLine($"New version avalible! {version}");
             updater.Update();
+        }
+
+        private void Updater_OnException(Exception exception)
+        {
+            ConsoleExt.WriteLine(exception.Message, ConsoleColor.Red);
+            Environment.Exit(-1);
         }
 
         private async Task Client_MessageCreated(DSharpPlus.EventArgs.MessageCreateEventArgs e)

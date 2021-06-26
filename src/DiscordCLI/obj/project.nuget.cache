@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Groh7GZvG+C+TVKGmTmlyGLnDsI8GkKwOuPKx6XoRXzBdjvcPsSajwrp+90XLCmwEHR7FAimUXspTiI5YLbXRA==",
+  "dgSpecHash": "mc7SwpLyhpdRHTq1AENnS/a2CtBHM0jUjPTEQoOhb2FZ14eZmHTEW5OgCjuy+XKdTzktXR/1/aacOY8y3NijuQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\David\\Google Drive\\Programmieren\\DiscordCLI\\src\\DiscordCLI\\DiscordCLI.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\David\\.nuget\\packages\\alwaysuptodate\\1.0.0.3\\alwaysuptodate.1.0.0.3.nupkg.sha512",
+    "C:\\Users\\David\\.nuget\\packages\\alwaysuptodate\\1.0.0.4\\alwaysuptodate.1.0.0.4.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\colorminestandard\\1.0.0\\colorminestandard.1.0.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\dsharpplus\\3.2.3\\dsharpplus.3.2.3.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\microsoft.csharp\\4.3.0\\microsoft.csharp.4.3.0.nupkg.sha512",
@@ -102,8 +102,7 @@
     "C:\\Users\\David\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\David\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\David\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.5\\microsoft.netcore.app.host.win-x64.5.0.5.nupkg.sha512"
+    "C:\\Users\\David\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }
