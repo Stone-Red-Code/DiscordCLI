@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AlwaysUpToDate" Version="1.0.0.3" />
+    <PackageReference Include="AlwaysUpToDate" Version="1.0.0.4" />
     <PackageReference Include="ColorMineStandard" Version="1.0.0" />
     <PackageReference Include="DSharpPlus" Version="3.2.3" />
     <PackageReference Include="Stone_Red-C-Sharp-Utilities" Version="1.0.2.1" />

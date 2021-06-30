@@ -1,0 +1,9 @@
+C:\Users\David\Google Drive\Programmieren\DiscordCLI\DiscordCLI\bin\Release\net5.0\publish\Linux-arm\DiscordCLI.exe
+C:\Users\David\Google Drive\Programmieren\DiscordCLI\DiscordCLI\bin\Release\net5.0\publish\Linux-arm\DiscordCLI.dll
+C:\Users\David\Google Drive\Programmieren\DiscordCLI\DiscordCLI\bin\Release\net5.0\publish\Linux-arm\DiscordCLI.deps.json
+C:\Users\David\Google Drive\Programmieren\DiscordCLI\DiscordCLI\bin\Release\net5.0\publish\Linux-arm\DiscordCLI.runtimeconfig.json
+C:\Users\David\Google Drive\Programmieren\DiscordCLI\DiscordCLI\bin\Release\net5.0\publish\Linux-arm\DiscordCLI.pdb
+C:\Users\David\Google Drive\Programmieren\DiscordCLI\DiscordCLI\bin\Release\net5.0\publish\Linux-arm\ColorMineStandard.dll
+C:\Users\David\Google Drive\Programmieren\DiscordCLI\DiscordCLI\bin\Release\net5.0\publish\Linux-arm\DSharpPlus.dll
+C:\Users\David\Google Drive\Programmieren\DiscordCLI\DiscordCLI\bin\Release\net5.0\publish\Linux-arm\Newtonsoft.Json.dll
+C:\Users\David\Google Drive\Programmieren\DiscordCLI\DiscordCLI\bin\Release\net5.0\publish\Linux-arm\Stone_Red-C-Sharp-Utilities.dll

@@ -1,0 +1,2 @@
+C:\Users\David\Google Drive\Programmieren\DiscordCLI\DiscordCLI\bin\Release\net5.0\publish\Linux-arm\DiscordCLI.pdb
+C:\Users\David\Google Drive\Programmieren\DiscordCLI\DiscordCLI\bin\Release\net5.0\publish\Linux-arm\DiscordCLI
