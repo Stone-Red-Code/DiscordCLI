@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v5.0": {
       "DiscordCLI/0.0.4.0": {
         "dependencies": {
-          "AlwaysUpToDate": "1.0.0.3",
+          "AlwaysUpToDate": "1.0.0.4",
           "ColorMineStandard": "1.0.0",
           "DSharpPlus": "3.2.3",
           "Stone_Red-C-Sharp-Utilities": "1.0.2.1"
@@ -17,14 +17,14 @@
           "DiscordCLI.dll": {}
         }
       },
-      "AlwaysUpToDate/1.0.0.3": {
+      "AlwaysUpToDate/1.0.0.4": {
         "dependencies": {
           "System.Text.Json": "5.0.2"
         },
         "runtime": {
           "lib/netstandard2.1/AlwaysUpToDate.dll": {
-            "assemblyVersion": "1.0.0.3",
-            "fileVersion": "1.0.0.3"
+            "assemblyVersion": "1.0.0.4",
+            "fileVersion": "1.0.0.4"
           }
         }
       },
@@ -1018,12 +1018,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "AlwaysUpToDate/1.0.0.3": {
+    "AlwaysUpToDate/1.0.0.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-vJCFkNoEa4cnf4Bck20k0DaPsLk1kgP8uH2B2dbOSpXv+kzVzLAaUsPWO1cm3Yo8bs3Z8JwG3J4xz4AcRzh3yg==",
-      "path": "alwaysuptodate/1.0.0.3",
-      "hashPath": "alwaysuptodate.1.0.0.3.nupkg.sha512"
+      "sha512": "sha512-A/9hqxN8bKsambpkv6klWlRNFZ4gt5bQeO0ciBSx/tYrD6guTU8KzNNdjuvKV7AEBTObbchbEpr+kbC1/JpqYA==",
+      "path": "alwaysuptodate/1.0.0.4",
+      "hashPath": "alwaysuptodate.1.0.0.4.nupkg.sha512"
     },
     "ColorMineStandard/1.0.0": {
       "type": "package",

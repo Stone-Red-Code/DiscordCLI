@@ -51,6 +51,14 @@ namespace DiscordCLI
         /// <returns>exit bool and write override bool</returns>
         public async Task<(bool, bool)> CheckCommand(string rawInput)
         {
+            string input = rawInput.Trim().ToLower().Replace('\n', '\0');
+
+            if (string.IsNullOrWhiteSpace(input.StartsWith(InputManager.Prefix) ? input.Remove(0, 1) : input))
+            {
+                Console.CursorTop--;
+                return (false, false);
+            }
+
             cooldown++;
 
             if (cooldown > 1)
@@ -61,12 +69,7 @@ namespace DiscordCLI
                 return (false, true);
             }
 
-            string input = rawInput.Trim().ToLower().Replace('\n', '\0');
-
-            if (string.IsNullOrWhiteSpace(input))
-                return (false, false);
-
-            if (input.StartsWith(InputManager.prefix))
+            if (input.StartsWith(InputManager.Prefix))
             {
                 input = input.Remove(0, 1);
             }
@@ -88,7 +91,7 @@ namespace DiscordCLI
 
             if (input == "help" || input == "?")
             {
-                Console.WriteLine($"Prefix: '{InputManager.prefix}' (Only required in text channels)");
+                Console.WriteLine($"Prefix: '{InputManager.Prefix}' (Only required in text channels)");
                 Console.WriteLine();
 
                 for (int i = 0; i < CommandsList.Count; i++)

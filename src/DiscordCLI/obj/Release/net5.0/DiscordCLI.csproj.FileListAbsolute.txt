@@ -42,3 +42,26 @@ C:\Users\David\Google Drive\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\
 C:\Users\David\Google Drive\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\System.Text.Json.dll
 C:\Users\David\Google Drive\Programmieren\DiscordCLI\src\DiscordCLI\obj\Release\net5.0\DiscordCLI.csproj.CopyComplete
 C:\Users\David\Google Drive\Programmieren\DiscordCLI\src\DiscordCLI\obj\Release\net5.0\DiscordCLI.genruntimeconfig.cache
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\DiscordCLI.exe
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\DiscordCLI.deps.json
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\DiscordCLI.runtimeconfig.json
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\DiscordCLI.runtimeconfig.dev.json
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\DiscordCLI.dll
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\ref\DiscordCLI.dll
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\DiscordCLI.pdb
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\AlwaysUpToDate.dll
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\ColorMineStandard.dll
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\DSharpPlus.dll
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\Newtonsoft.Json.dll
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\Stone_Red-C-Sharp-Utilities.dll
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\System.Text.Json.dll
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\obj\Release\net5.0\DiscordCLI.csproj.AssemblyReference.cache
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\obj\Release\net5.0\DiscordCLI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\obj\Release\net5.0\DiscordCLI.AssemblyInfoInputs.cache
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\obj\Release\net5.0\DiscordCLI.AssemblyInfo.cs
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\obj\Release\net5.0\DiscordCLI.csproj.CoreCompileInputs.cache
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\obj\Release\net5.0\DiscordCLI.csproj.CopyComplete
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\obj\Release\net5.0\DiscordCLI.dll
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\obj\Release\net5.0\ref\DiscordCLI.dll
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\obj\Release\net5.0\DiscordCLI.pdb
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\obj\Release\net5.0\DiscordCLI.genruntimeconfig.cache

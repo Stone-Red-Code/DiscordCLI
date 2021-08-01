@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mc7SwpLyhpdRHTq1AENnS/a2CtBHM0jUjPTEQoOhb2FZ14eZmHTEW5OgCjuy+XKdTzktXR/1/aacOY8y3NijuQ==",
+  "dgSpecHash": "UlTKwHDcC1nF5xjNTUuoUXtf5qZoxfx+vAbykvwX/WniUmngzJ301ZuAxl8Tk3pWkWRejwwLVBJF5PDdN74unQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\David\\Google Drive\\Programmieren\\DiscordCLI\\src\\DiscordCLI\\DiscordCLI.csproj",
+  "projectFilePath": "C:\\Users\\David\\Programmieren\\DiscordCLI\\src\\DiscordCLI\\DiscordCLI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\David\\.nuget\\packages\\alwaysuptodate\\1.0.0.4\\alwaysuptodate.1.0.0.4.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\colorminestandard\\1.0.0\\colorminestandard.1.0.0.nupkg.sha512",

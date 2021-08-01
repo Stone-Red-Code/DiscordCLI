@@ -7,6 +7,7 @@ using Stone_Red_Utilities.ConsoleExtentions;
 using System.Reflection;
 using AlwaysUpToDate;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace DiscordCLI
 {
@@ -115,7 +116,14 @@ namespace DiscordCLI
 
         private async Task Client_MessageCreated(DSharpPlus.EventArgs.MessageCreateEventArgs e)
         {
-            await outputManager.WriteMessage(e.Message, e.Channel, e.Guild);
+            try
+            {
+                await outputManager.WriteMessage(e.Message, e.Channel, e.Guild);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
         }
     }
 }

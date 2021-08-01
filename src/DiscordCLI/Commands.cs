@@ -47,7 +47,7 @@ namespace DiscordCLI
 
         protected async Task ListGuildChannels(string args)
         {
-            IReadOnlyCollection<DiscordChannel> textChannels;
+            IReadOnlyCollection<DiscordChannel> discordChannels;
             DiscordGuild guild;
 
             if (args != null)
@@ -75,21 +75,28 @@ namespace DiscordCLI
             }
 
             GlobalInformation.currentGuild = guild;
-            textChannels = guild.Channels;
+            discordChannels = guild.Channels;
 
-            int index = 1;
-            foreach (DiscordChannel channel in textChannels)
+            int index = 0;
+            foreach (DiscordChannel channel in discordChannels.OrderBy(x => x.Position))
             {
-                switch (channel.Type)
+                if (channel.Type == ChannelType.Category)
                 {
-                    case ChannelType.Category:
-                        //Console.WriteLine($"[{channel.Name}]");
-                        break;
+                    Console.WriteLine();
+                    Console.WriteLine($"--- {channel.Name} ---");
+                    foreach (DiscordChannel child in channel.Children.OrderBy(x => x.Position))
+                    {
+                        if (child.Type == ChannelType.Text)
+                        {
+                            index++;
 
-                    case ChannelType.Text:
-                        Console.WriteLine($"{index}. {channel.Name}");
-                        index++;
-                        break;
+                            Console.WriteLine($"{index}. {child.Name}");
+                        }
+                        else
+                        {
+                            ConsoleExt.WriteLine($"-. {child.Name}", ConsoleColor.DarkGray);
+                        }
+                    }
                 }
             }
 
@@ -108,11 +115,11 @@ namespace DiscordCLI
 
             if (int.TryParse(args, out int ind))
             {
-                textChannel = GlobalInformation.currentGuild?.Channels.Where(x => x.Type == ChannelType.Text).ElementAtOrDefault(ind - 1);
+                textChannel = GlobalInformation.currentGuild?.Channels.Where(x => x.Type == ChannelType.Text).OrderBy(x => x.Position).ElementAtOrDefault(ind - 1);
             }
             else
             {
-                textChannel = GlobalInformation.currentGuild?.Channels.Where(x => x.Type == ChannelType.Text).FirstOrDefault(x => x.Name == args);
+                textChannel = GlobalInformation.currentGuild?.Channels.Where(x => x.Type == ChannelType.Text).OrderBy(x => x.Position).FirstOrDefault(x => x.Name == args);
             }
 
             GlobalInformation.currentTextChannel = textChannel;
@@ -129,6 +136,7 @@ namespace DiscordCLI
                 {
                     await outputManager.WriteMessage(message, textChannel, GlobalInformation.currentGuild, false);
                 }
+                Console.CursorTop--;
             }
             catch (Exception ex)
             {
@@ -203,6 +211,11 @@ namespace DiscordCLI
             if (discordUser is null)
             {
                 discordUser = GlobalInformation.currentGuild?.Members?.FirstOrDefault(user => $"{user.Username}#{user.Discriminator}".EqualsIgnoreSpacesAndCase(userName));
+            }
+
+            if (discordUser is null)
+            {
+                discordUser = GlobalInformation.currentGuild?.Members?.FirstOrDefault(user => $"{user.Username}".EqualsIgnoreSpacesAndCase(userName));
             }
 
             if (discordUser is null)
