@@ -76,9 +76,18 @@ namespace DiscordCLI
             else if (GlobalInformation.currentTextChannel != null)
             {
                 cooldown++;
-                Console.Write("\r" + new string(' ', Console.WindowWidth));
-                await GlobalInformation.currentTextChannel.SendMessageAsync(rawInput);
-                return (false, false);
+
+                try
+                {
+                    await GlobalInformation.currentTextChannel.SendMessageAsync(rawInput);
+                    Console.Write("\r" + new string(' ', Console.WindowWidth));
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine();
+                    ConsoleExt.WriteLine(ex.Message, ConsoleColor.Red);
+                }
+                return (false, true);
             }
 
             Console.WriteLine();

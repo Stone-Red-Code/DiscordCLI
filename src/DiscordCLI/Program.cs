@@ -89,6 +89,7 @@ namespace DiscordCLI
             outputManager.InputManager = inputManager;
 
             await inputManager.ReadInput();
+            Environment.Exit(0);
         }
 
         private async void Updater_NoUpdateAvailible()

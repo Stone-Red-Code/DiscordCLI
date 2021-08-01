@@ -179,7 +179,7 @@ namespace DiscordCLI
             }
             catch (Exception ex)
             {
-                ConsoleExt.WriteLine(ex, ConsoleColor.Red);
+                ConsoleExt.WriteLine(ex.Message, ConsoleColor.Red);
                 GlobalInformation.currentTextChannel = null;
             }
         }

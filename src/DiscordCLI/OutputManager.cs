@@ -158,7 +158,7 @@ namespace DiscordCLI
                 }
             }
 
-            foreach (Match match in Regex.Matches(message, @"((https?)\://|www.)[A-Za-z0-9\.\-]+(/[A-Za-z0-9\?\&\=;\+!'\(\)\*\-\._~%]*)*", RegexOptions.IgnoreCase))
+            foreach (Match match in Regex.Matches(message, @"((https?)\:\/\/|www.)[A-Za-z0-9\.\-\&\#\?\/]*", RegexOptions.IgnoreCase))
             {
                 message = message.Replace(match.Value, $"\0<C{(int)ConsoleColor.Blue}C>{match.Value}\0");
             }
@@ -178,7 +178,6 @@ namespace DiscordCLI
                 else
                 {
                     consoleColor = ClosestConsoleColor(color);
-                    
                 }
 
                 if (consoleColor == Console.BackgroundColor || consoleColor == ConsoleColor.DarkGray)
