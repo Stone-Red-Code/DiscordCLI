@@ -75,15 +75,17 @@ namespace DiscordCLI
                     Console.CursorLeft = infoString.Length + Input.Length - 1;
                 } while (keyInfo.Key != ConsoleKey.Enter);
 
-                if (GlobalInformation.currentTextChannel == null && !Input.StartsWith(Prefix))
+                if (GlobalInformation.currentTextChannel == null)
                 {
+                    Input = Input.Trim();
+                    if (!Input.StartsWith(Prefix))
+                        Input = Prefix + Input;
+
                     if (previousInputs.Count > 10)
                         previousInputs.RemoveAt(0);
 
                     if (previousInputs.Count == 0 || previousInputs[previousInputs.Count - 1] != Input)
                         previousInputs.Add(new string(Input));
-
-                    Input = Prefix + Input;
                 }
 
                 inputListIndex = 0;

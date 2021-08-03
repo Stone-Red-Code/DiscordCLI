@@ -80,6 +80,7 @@ namespace DiscordCLI
                 try
                 {
                     await GlobalInformation.currentTextChannel.SendMessageAsync(rawInput);
+                    Console.CursorTop--;
                     Console.Write("\r" + new string(' ', Console.WindowWidth));
                 }
                 catch (Exception ex)

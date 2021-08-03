@@ -23,18 +23,18 @@ namespace DiscordCLI
             client = discordClient;
         }
 
-        public async Task WriteMessage(DiscordMessage message, DiscordChannel channel, DiscordGuild guild, bool writeInfo = true)
+        public async Task WriteMessage(DiscordMessage message, DiscordChannel channel, bool writeInfo = true)
         {
             try
             {
-                if (channel?.Id != GlobalInformation.currentTextChannel?.Id)
+                if (message.ChannelId != GlobalInformation.currentTextChannel?.Id)
                     return;
 
                 DiscordUser user = message.Author;
 
                 if (GlobalInformation.currentGuild is not null)
                 {
-                    DiscordMember discordMember = await guild.GetMemberAsync(user.Id);
+                    DiscordMember discordMember = await channel.Guild.GetMemberAsync(user.Id);
                     DiscordColor discordColor = discordMember.Color;
                     Color color = Color.FromArgb(discordColor.R, discordColor.G, discordColor.B);
 
@@ -104,7 +104,7 @@ namespace DiscordCLI
                 {
                     if (user?.Mention is not null)
                     {
-                        if (match.Value == user.Mention)
+                        if (match.Value == user.Mention.Replace("!", string.Empty))
                         {
                             message = message.Replace(match.Value, $"\0<C{(int)ConsoleColor.Blue}C>@{user.Username}#{user.Discriminator}\0");
                         }

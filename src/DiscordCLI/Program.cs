@@ -4,9 +4,7 @@ using System.Threading.Tasks;
 using System;
 using DSharpPlus.Exceptions;
 using Stone_Red_Utilities.ConsoleExtentions;
-using System.Reflection;
 using AlwaysUpToDate;
-using System.Runtime.InteropServices;
 using System.Diagnostics;
 
 namespace DiscordCLI
@@ -64,7 +62,6 @@ namespace DiscordCLI
                     Token = token,
                     TokenType = TokenType.User,
                 });
-
                 client.MessageCreated += Client_MessageCreated;
 
                 await client.ConnectAsync();
@@ -119,7 +116,7 @@ namespace DiscordCLI
         {
             try
             {
-                await outputManager.WriteMessage(e.Message, e.Channel, e.Guild);
+                await outputManager.WriteMessage(e.Message, e.Channel);
             }
             catch (Exception ex)
             {
