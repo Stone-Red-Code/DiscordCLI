@@ -5,7 +5,6 @@
 
 # DiscordCLI-specific files
 token.txt
-src/DiscordCLI/bin/Debug
 
 # User-specific files
 *.rsuser
