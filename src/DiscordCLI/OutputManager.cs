@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace DiscordCLI
 {
@@ -22,18 +23,18 @@ namespace DiscordCLI
             client = discordClient;
         }
 
-        public async Task WriteMessage(DiscordMessage message, DiscordChannel channel, DiscordGuild guild, bool writeInfo = true)
+        public async Task WriteMessage(DiscordMessage message, DiscordChannel channel, bool writeInfo = true)
         {
             try
             {
-                if (channel.Id != GlobalInformation.currentTextChannel?.Id)
+                if (message.ChannelId != GlobalInformation.currentTextChannel?.Id)
                     return;
 
                 DiscordUser user = message.Author;
 
                 if (GlobalInformation.currentGuild is not null)
                 {
-                    DiscordMember discordMember = await guild.GetMemberAsync(user.Id);
+                    DiscordMember discordMember = await channel.Guild.GetMemberAsync(user.Id);
                     DiscordColor discordColor = discordMember.Color;
                     Color color = Color.FromArgb(discordColor.R, discordColor.G, discordColor.B);
 
@@ -94,108 +95,100 @@ namespace DiscordCLI
 
         private void WriteTop(string message, Color color, DiscordMessage discordMessage, bool removeText = true, bool newLine = true, string info = null)
         {
-            ConsoleColor consoleColor = ClosestConsoleColor(color);
-
-            if (consoleColor == Console.BackgroundColor || consoleColor == ConsoleColor.DarkGray)
-                consoleColor = ConsoleColor.White;
-
             if (removeText)
                 Console.Write('\r' + new string(' ', Console.WindowWidth) + '\r');
 
-            List<string> words = message.Replace("\n", " %<newLine>%").Split(' ').ToList();
-            for (int i = 0; i < words.Count; i++)
+            foreach (Match match in Regex.Matches(message, "<@(.*?)>"))
             {
-                ConsoleColor mentionColor = ConsoleColor.Black;
-
-                if (IsUri(words[i]))
-                {
-                    mentionColor = ConsoleColor.DarkCyan;
-                }
-
-                if (words[i].Contains("<") && words[i].Contains(">") && !(words[i].StartsWith("<") && words[i].EndsWith(">")))
-                {
-                    int index1 = words[i].IndexOf("<");
-                    int index2 = words[i].IndexOf(">");
-                    if (index1 < index2)
-                    {
-                        string part1 = words[i].Substring(0, index1);
-                        string part2 = words[i].Substring(index1, index2 - index1 + 1);
-                        string part3 = words[i].Substring(index2 + 1, words[i].Length - index2 - 1);
-
-                        words[i] = part2;
-                        if (!string.IsNullOrEmpty(part1))
-                        {
-                            words.Insert(i, part1);
-                        }
-
-                        if (!string.IsNullOrEmpty(part3))
-                        {
-                            words.Insert(i + (string.IsNullOrEmpty(part1) ? 1 : 2), part3);
-                        }
-                    }
-                }
-
                 foreach (DiscordUser user in discordMessage.MentionedUsers)
                 {
                     if (user?.Mention is not null)
                     {
-                        if (words[i].Contains(user.Mention))
+                        if (match.Value == user.Mention.Replace("!", string.Empty))
                         {
-                            words[i] = words[i].Replace(user.Mention, $"@{user.Username}#{user.Discriminator}");
-                            mentionColor = ConsoleColor.Blue;
+                            message = message.Replace(match.Value, $"\0<C{(int)ConsoleColor.Blue}C>@{user.Username}#{user.Discriminator}\0");
                         }
                     }
                     else
                     {
-                        if (words[i].Contains("<@") && words[i].Contains('>'))
+                        if (ulong.TryParse(match.Value.Replace("!", string.Empty).Replace("<@", string.Empty).Replace(">", string.Empty), out ulong id))
                         {
-                            if (ulong.TryParse(words[i].Replace("!", string.Empty).Replace("<@", string.Empty).Replace(">", string.Empty), out ulong id))
-                            {
-                                DiscordUser discordUser = client.GetUserAsync(id).Result;
-                                Console.WriteLine(discordUser is null);
+                            DiscordUser discordUser = client.GetUserAsync(id).Result;
 
-                                words[i] = words[i].Replace("<@!", "<@").Replace(discordUser.Mention, $"@{discordUser.Username}#{discordUser.Discriminator}");
-                                mentionColor = ConsoleColor.Blue;
-                            }
+                            message = message.Replace(match.Value, $"\0<C{(int)ConsoleColor.Blue}C>@{discordUser.Username}#{discordUser.Discriminator}\0");
                         }
                     }
                 }
-
-                if (!discordMessage.Channel.IsPrivate)
-                    foreach (DiscordChannel channel in discordMessage.MentionedChannels)
-                    {
-                        if (channel?.Mention is not null)
-                            if (words[i].Contains(channel.Mention))
-                            {
-                                words[i] = words[i].Replace(channel.Mention, $"#{channel.Name}");
-                                mentionColor = ConsoleColor.Blue;
-                            }
-                    }
-
-                if (!discordMessage.Channel.IsPrivate)
-                    foreach (DiscordRole role in discordMessage.MentionedRoles)
-                    {
-                        if (role?.Mention is not null)
-                            if (words[i].Contains(role.Mention))
-                            {
-                                words[i] = words[i].Replace(role.Mention, $"@{role.Name}");
-                                DiscordColor discordColor = role.Color;
-                                mentionColor = ClosestConsoleColor(Color.FromArgb(discordColor.R, discordColor.G, discordColor.B));
-                            }
-                    }
-
-                ConsoleExt.Write(words[i].Replace("%<newLine>%", "\n") + " ", mentionColor == ConsoleColor.Black ? consoleColor : mentionColor);
             }
 
-            ConsoleExt.Write(info, ConsoleColor.DarkGray);
+            foreach (Match match in Regex.Matches(message, "<#(.*?)>"))
+            {
+                foreach (DiscordChannel channel in discordMessage.MentionedChannels)
+                {
+                    if (channel?.Mention is not null)
+                    {
+                        if (match.Value == channel.Mention)
+                        {
+                            message = message.Replace(match.Value, $"\0<C{(int)ConsoleColor.Blue}C>#{channel.Name}\0");
+                        }
+                    }
+                    else
+                    {
+                        if (ulong.TryParse(match.Value.Replace("<#", string.Empty).Replace(">", string.Empty), out ulong id))
+                        {
+                            DiscordChannel discordChannel = client.GetChannelAsync(id).Result;
+                            message = message.Replace(match.Value, $"\0<C{(int)ConsoleColor.Blue}C>#{discordChannel.Name}\0");
+                        }
+                    }
+                }
+            }
+
+            foreach (Match match in Regex.Matches(message, @"<@&(.*?)>"))
+            {
+                foreach (DiscordRole role in discordMessage.MentionedRoles)
+                {
+                    if (role?.Mention is not null)
+                    {
+                        if (match.Value == role.Mention)
+                        {
+                            DiscordColor discordColor = role.Color;
+                            message = message.Replace(match.Value, $"\0<C{(int)ClosestConsoleColor(Color.FromArgb(discordColor.R, discordColor.G, discordColor.B))}C>@{role.Name}\0");
+                        }
+                    }
+                }
+            }
+
+            foreach (Match match in Regex.Matches(message, @"((https?)\:\/\/|www.)[A-Za-z0-9\.\-\&\#\?\/]*", RegexOptions.IgnoreCase))
+            {
+                message = message.Replace(match.Value, $"\0<C{(int)ConsoleColor.Blue}C>{match.Value}\0");
+            }
+
+            foreach (string part in message.Split("\0"))
+            {
+                ConsoleColor consoleColor;
+                string messagePart = part;
+
+                string stringColor = Regex.Match(messagePart, "(?<=(<C))(.*)(?=C>)").Value;
+                bool succ = int.TryParse(stringColor, out int colorIndex);
+                if (succ && colorIndex >= 0 && colorIndex < 16)
+                {
+                    messagePart = messagePart.Replace($"<C{stringColor}C>", string.Empty);
+                    consoleColor = (ConsoleColor)colorIndex;
+                }
+                else
+                {
+                    consoleColor = ClosestConsoleColor(color);
+                }
+
+                if (consoleColor == Console.BackgroundColor || consoleColor == ConsoleColor.DarkGray)
+                    consoleColor = ConsoleColor.White;
+                ConsoleExt.Write(messagePart, consoleColor);
+            }
+
+            ConsoleExt.Write($" {info}", ConsoleColor.DarkGray);
 
             if (newLine)
                 Console.WriteLine();
-        }
-
-        private bool IsUri(string input)
-        {
-            return Uri.TryCreate(input, UriKind.Absolute, out Uri uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
         }
 
         private ConsoleColor ClosestConsoleColor(Color targetColor)

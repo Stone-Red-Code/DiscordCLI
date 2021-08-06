@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 using System;
 using DSharpPlus.Exceptions;
 using Stone_Red_Utilities.ConsoleExtentions;
-using System.Reflection;
 using AlwaysUpToDate;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 
 namespace DiscordCLI
@@ -18,12 +18,7 @@ namespace DiscordCLI
         private CommandsManager commandsManager;
         private InputManager inputManager;
         private OutputManager outputManager;
-
-#if DEBUG
-        private Updater updater = new Updater(new TimeSpan(0), "https://raw.githubusercontent.com/Stone-Red-Code/DiscordCLI/develop/update/updateInfo.json", "./", true);
-#else
-        private Updater updater = new Updater(new TimeSpan(0), "https://raw.githubusercontent.com/Stone-Red-Code/DiscordCLI/main/update/updateInfo.json", "./", true);
-#endif
+        private Updater updater;
 
         public static void Main() => new Program().Setup().GetAwaiter().GetResult();
 
@@ -32,9 +27,37 @@ namespace DiscordCLI
             Console.ForegroundColor = ConsoleColor.White;
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
+            PlatformType platformType;
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                if (RuntimeInformation.ProcessArchitecture == Architecture.Arm || RuntimeInformation.ProcessArchitecture == Architecture.Arm64)
+                {
+                    platformType = PlatformType.LinuxARM;
+                }
+                else
+                {
+                    platformType = PlatformType.Linux;
+                }
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                platformType = PlatformType.Windows;
+            }
+            else
+            {
+                throw new PlatformNotSupportedException("DiscordCLI only supports Windows and Linux!");
+            }
+#if DEBUG
+            updater = new Updater(new TimeSpan(0), $"https://raw.githubusercontent.com/Stone-Red-Code/DiscordCLI/develop/update/updateInfo{platformType}.json", "./", true);
+#else
+            updater = new Updater(new TimeSpan(0), $"https://raw.githubusercontent.com/Stone-Red-Code/DiscordCLI/main/update/updateInfo{platformType}.json", "./", true);
+#endif
+
             updater.UpdateAvailible += Updater_UpdateAvailible;
             updater.NoUpdateAvailible += Updater_NoUpdateAvailible;
             updater.ProgressChanged += Updater_ProgressChanged;
+            updater.OnException += Updater_OnException;
 
             updater.Start();
             await Task.Delay(-1);
@@ -62,7 +85,6 @@ namespace DiscordCLI
                     Token = token,
                     TokenType = TokenType.User,
                 });
-
                 client.MessageCreated += Client_MessageCreated;
 
                 await client.ConnectAsync();
@@ -87,6 +109,7 @@ namespace DiscordCLI
             outputManager.InputManager = inputManager;
 
             await inputManager.ReadInput();
+            Environment.Exit(0);
         }
 
         private async void Updater_NoUpdateAvailible()
@@ -97,7 +120,7 @@ namespace DiscordCLI
         private void Updater_ProgressChanged(long? totalFileSize, long totalBytesDownloaded, double? progressPercentage)
         {
             Console.CursorLeft = 0;
-            ConsoleExt.WriteLine($"Downloading Update: {progressPercentage}% {totalBytesDownloaded}/{totalFileSize}", ConsoleColor.Yellow);
+            ConsoleExt.WriteLine($"Downloading update: {progressPercentage}% {totalBytesDownloaded}/{totalFileSize}", ConsoleColor.Yellow);
         }
 
         private void Updater_UpdateAvailible(string version, string additionalInformation)
@@ -106,9 +129,23 @@ namespace DiscordCLI
             updater.Update();
         }
 
+        private void Updater_OnException(Exception exception)
+        {
+            ConsoleExt.WriteLine("Update failed!", ConsoleColor.Red);
+            ConsoleExt.WriteLine(exception.Message, ConsoleColor.Red);
+            Environment.Exit(-1);
+        }
+
         private async Task Client_MessageCreated(DSharpPlus.EventArgs.MessageCreateEventArgs e)
         {
-            await outputManager.WriteMessage(e.Message, e.Channel, e.Guild);
+            try
+            {
+                await outputManager.WriteMessage(e.Message, e.Channel);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
         }
     }
 }

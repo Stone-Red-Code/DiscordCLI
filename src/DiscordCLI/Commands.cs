@@ -47,7 +47,7 @@ namespace DiscordCLI
 
         protected async Task ListGuildChannels(string args)
         {
-            IReadOnlyCollection<DiscordChannel> textChannels;
+            IReadOnlyCollection<DiscordChannel> discordChannels;
             DiscordGuild guild;
 
             if (args != null)
@@ -75,21 +75,28 @@ namespace DiscordCLI
             }
 
             GlobalInformation.currentGuild = guild;
-            textChannels = guild.Channels;
+            discordChannels = guild.Channels;
 
-            int index = 1;
-            foreach (DiscordChannel channel in textChannels)
+            int index = 0;
+            foreach (DiscordChannel channel in discordChannels.OrderBy(x => x.Position))
             {
-                switch (channel.Type)
+                if (channel.Type == ChannelType.Category)
                 {
-                    case ChannelType.Category:
-                        //Console.WriteLine($"[{channel.Name}]");
-                        break;
+                    Console.WriteLine();
+                    Console.WriteLine($"--- {channel.Name} ---");
+                    foreach (DiscordChannel child in channel.Children.OrderBy(x => x.Position))
+                    {
+                        if (child.Type == ChannelType.Text)
+                        {
+                            index++;
 
-                    case ChannelType.Text:
-                        Console.WriteLine($"{index}. {channel.Name}");
-                        index++;
-                        break;
+                            Console.WriteLine($"{index}. {child.Name}");
+                        }
+                        else
+                        {
+                            ConsoleExt.WriteLine($"-. {child.Name}", ConsoleColor.DarkGray);
+                        }
+                    }
                 }
             }
 
@@ -108,11 +115,11 @@ namespace DiscordCLI
 
             if (int.TryParse(args, out int ind))
             {
-                textChannel = GlobalInformation.currentGuild?.Channels.Where(x => x.Type == ChannelType.Text).ElementAtOrDefault(ind - 1);
+                textChannel = GlobalInformation.currentGuild?.Channels.Where(x => x.Type == ChannelType.Text).OrderBy(x => x.Position).ElementAtOrDefault(ind - 1);
             }
             else
             {
-                textChannel = GlobalInformation.currentGuild?.Channels.Where(x => x.Type == ChannelType.Text).FirstOrDefault(x => x.Name == args);
+                textChannel = GlobalInformation.currentGuild?.Channels.Where(x => x.Type == ChannelType.Text).OrderBy(x => x.Position).FirstOrDefault(x => x.Name == args);
             }
 
             GlobalInformation.currentTextChannel = textChannel;
@@ -127,8 +134,9 @@ namespace DiscordCLI
             {
                 foreach (DiscordMessage message in (textChannel.GetMessagesAsync(10).Result).Reverse())
                 {
-                    await outputManager.WriteMessage(message, textChannel, GlobalInformation.currentGuild, false);
+                    await outputManager.WriteMessage(message, textChannel, false);
                 }
+                Console.CursorTop--;
             }
             catch (Exception ex)
             {
@@ -166,12 +174,12 @@ namespace DiscordCLI
             {
                 foreach (DiscordMessage message in (await dmChannel.GetMessagesAsync(10)).Reverse())
                 {
-                    await outputManager.WriteMessage(message, dmChannel, GlobalInformation.currentGuild, false);
+                    await outputManager.WriteMessage(message, dmChannel, false);
                 }
             }
             catch (Exception ex)
             {
-                ConsoleExt.WriteLine(ex, ConsoleColor.Red);
+                ConsoleExt.WriteLine(ex.Message, ConsoleColor.Red);
                 GlobalInformation.currentTextChannel = null;
             }
         }
@@ -198,23 +206,25 @@ namespace DiscordCLI
                 return;
             }
 
-            DiscordUser discordUser = GlobalInformation.currentGuild?.Members?.FirstOrDefault(user => user.Username.EqualsIgnoreSpacesAndCase(userName));
+            DiscordUser discordUser = await GetDiscordUser(userName);
 
-            if (discordUser is null)
+            string status = discordUser?.Presence?.Status.ToString();
+            status ??= "N/A";
+
+            if (discordUser is DiscordMember discordMember)
             {
-                discordUser = GlobalInformation.currentGuild?.Members?.FirstOrDefault(user => $"{user.Username}#{user.Discriminator}".EqualsIgnoreSpacesAndCase(userName));
+                string infoString =
+                    $"Username: {discordMember.Username}#{discordMember.Discriminator}" + Environment.NewLine +
+                    $"Nickname: {discordMember.Nickname ?? "N/A"}" + Environment.NewLine +
+                    $"Roles: {string.Join(", ", discordMember.Roles.Select(x => x.Name))}" + Environment.NewLine +
+                    $"Status: {status}" + Environment.NewLine +
+                    $"Created at: {discordMember.CreationTimestamp}" + Environment.NewLine +
+                    $"ID: {discordMember.Id}" + Environment.NewLine +
+                    $"Bot: {discordMember.IsBot}";
+                Console.WriteLine(infoString);
             }
-
-            if (discordUser is null)
+            else if (discordUser is not null)
             {
-                discordUser = GlobalInformation.currentGuild?.Members?.FirstOrDefault(user => $"{user.Nickname}".EqualsIgnoreSpacesAndCase(userName));
-            }
-
-            if (discordUser is not null)
-            {
-                string status = discordUser.Presence?.Status.ToString();
-                status ??= "N/A";
-
                 string infoString =
                     $"Username: {discordUser.Username}#{discordUser.Discriminator}" + Environment.NewLine +
                     $"Status: {status}" + Environment.NewLine +
@@ -228,7 +238,23 @@ namespace DiscordCLI
                 ConsoleExt.WriteLine("User not found!", ConsoleColor.Red);
             }
 
-            await Task.CompletedTask;
+            async Task<DiscordUser> GetDiscordUser(string name)
+            {
+                DiscordUser discordUser = GlobalInformation.currentGuild?.Members?.FirstOrDefault(user => user.Username.EqualsIgnoreSpacesAndCase(userName));
+                discordUser ??= GlobalInformation.currentGuild?.Members?.FirstOrDefault(user => $"{user.Username}#{user.Discriminator}".EqualsIgnoreSpacesAndCase(userName));
+                discordUser ??= GlobalInformation.currentGuild?.Members?.FirstOrDefault(user => $"{user.Username}".EqualsIgnoreSpacesAndCase(userName));
+                discordUser ??= GlobalInformation.currentGuild?.Members?.FirstOrDefault(user => $"{user.Nickname}".EqualsIgnoreSpacesAndCase(userName));
+
+                if (discordUser is null)
+                {
+                    IReadOnlyList<DiscordUser> users = await GlobalInformation.currentGuild.GetAllMembersAsync();
+                    discordUser ??= users.FirstOrDefault(user => user.Username.EqualsIgnoreSpacesAndCase(userName));
+                    discordUser ??= users.FirstOrDefault(user => $"{user.Username}#{user.Discriminator}".EqualsIgnoreSpacesAndCase(userName));
+                    discordUser ??= users.FirstOrDefault(user => $"{user.Username}".EqualsIgnoreSpacesAndCase(userName));
+                }
+
+                return discordUser;
+            }
         }
 
         protected async Task Clear(string args)

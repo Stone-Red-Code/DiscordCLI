@@ -1,0 +1,2 @@
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\publish\LinuxARM\DiscordCLI.pdb
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\publish\LinuxARM\DiscordCLI

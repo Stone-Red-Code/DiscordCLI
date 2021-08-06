@@ -1,0 +1,11 @@
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\publish\DiscordCLI\DiscordCLI.exe
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\publish\DiscordCLI\DiscordCLI.dll
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\publish\DiscordCLI\DiscordCLI.deps.json
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\publish\DiscordCLI\DiscordCLI.runtimeconfig.json
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\publish\DiscordCLI\DiscordCLI.pdb
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\publish\DiscordCLI\AlwaysUpToDate.dll
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\publish\DiscordCLI\ColorMineStandard.dll
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\publish\DiscordCLI\DSharpPlus.dll
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\publish\DiscordCLI\Newtonsoft.Json.dll
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\publish\DiscordCLI\Stone_Red-C-Sharp-Utilities.dll
+C:\Users\David\Programmieren\DiscordCLI\src\DiscordCLI\bin\Release\net5.0\publish\DiscordCLI\System.Text.Json.dll
