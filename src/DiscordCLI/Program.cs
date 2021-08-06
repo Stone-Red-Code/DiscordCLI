@@ -6,6 +6,7 @@ using DSharpPlus.Exceptions;
 using Stone_Red_Utilities.ConsoleExtentions;
 using AlwaysUpToDate;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace DiscordCLI
 {
@@ -17,12 +18,7 @@ namespace DiscordCLI
         private CommandsManager commandsManager;
         private InputManager inputManager;
         private OutputManager outputManager;
-
-#if DEBUG
-        private Updater updater = new Updater(new TimeSpan(0), "https://raw.githubusercontent.com/Stone-Red-Code/DiscordCLI/develop/update/updateInfo.json", "./", true);
-#else
-        private Updater updater = new Updater(new TimeSpan(0), "https://raw.githubusercontent.com/Stone-Red-Code/DiscordCLI/main/update/updateInfo.json", "./", true);
-#endif
+        private Updater updater;
 
         public static void Main() => new Program().Setup().GetAwaiter().GetResult();
 
@@ -30,6 +26,33 @@ namespace DiscordCLI
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+            PlatformType platformType;
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                if (RuntimeInformation.ProcessArchitecture == Architecture.Arm || RuntimeInformation.ProcessArchitecture == Architecture.Arm64)
+                {
+                    platformType = PlatformType.LinuxARM;
+                }
+                else
+                {
+                    platformType = PlatformType.Linux;
+                }
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                platformType = PlatformType.Windows;
+            }
+            else
+            {
+                throw new PlatformNotSupportedException("DiscordCLI only supports Windows and Linux!");
+            }
+#if DEBUG
+            updater = new Updater(new TimeSpan(0), $"https://raw.githubusercontent.com/Stone-Red-Code/DiscordCLI/develop/update/updateInfo{platformType}.json", "./", true);
+#else
+            updater = new Updater(new TimeSpan(0), $"https://raw.githubusercontent.com/Stone-Red-Code/DiscordCLI/main/update/updateInfo{platformType}.json", "./", true);
+#endif
 
             updater.UpdateAvailible += Updater_UpdateAvailible;
             updater.NoUpdateAvailible += Updater_NoUpdateAvailible;
@@ -108,6 +131,7 @@ namespace DiscordCLI
 
         private void Updater_OnException(Exception exception)
         {
+            ConsoleExt.WriteLine("Update failed!", ConsoleColor.Red);
             ConsoleExt.WriteLine(exception.Message, ConsoleColor.Red);
             Environment.Exit(-1);
         }
