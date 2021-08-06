@@ -13,11 +13,11 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("DiscordCLI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("0.0.5.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.0.5.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("DiscordCLI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DiscordCLI")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("0.0.5.0")]
 
 // Von der MSBuild WriteCodeFragment-Klasse generiert.
 

@@ -1,33 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\David\\Google Drive\\Programmieren\\DiscordCLI\\DiscordCLI\\DiscordCLI.csproj": {}
+    "C:\\Users\\David\\Programmieren\\DiscordCLI\\src\\DiscordCLI\\DiscordCLI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\David\\Google Drive\\Programmieren\\DiscordCLI\\DiscordCLI\\DiscordCLI.csproj": {
-      "version": "1.0.0",
+    "C:\\Users\\David\\Programmieren\\DiscordCLI\\src\\DiscordCLI\\DiscordCLI.csproj": {
+      "version": "0.0.5",
       "restore": {
-        "projectUniqueName": "C:\\Users\\David\\Google Drive\\Programmieren\\DiscordCLI\\DiscordCLI\\DiscordCLI.csproj",
+        "projectUniqueName": "C:\\Users\\David\\Programmieren\\DiscordCLI\\src\\DiscordCLI\\DiscordCLI.csproj",
         "projectName": "DiscordCLI",
-        "projectPath": "C:\\Users\\David\\Google Drive\\Programmieren\\DiscordCLI\\DiscordCLI\\DiscordCLI.csproj",
+        "projectPath": "C:\\Users\\David\\Programmieren\\DiscordCLI\\src\\DiscordCLI\\DiscordCLI.csproj",
         "packagesPath": "C:\\Users\\David\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\David\\Google Drive\\Programmieren\\DiscordCLI\\DiscordCLI\\obj\\publish\\linux-x64\\",
+        "outputPath": "C:\\Users\\David\\Programmieren\\DiscordCLI\\src\\DiscordCLI\\obj\\publish\\linux-x64\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\David\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\David\\AppData\\Roaming\\Cosmos User Kit\\packages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -46,6 +45,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "AlwaysUpToDate": {
+              "target": "Package",
+              "version": "[1.0.0.4, )"
+            },
             "ColorMineStandard": {
               "target": "Package",
               "version": "[1.0.0, )"
@@ -56,7 +59,7 @@
             },
             "Stone_Red-C-Sharp-Utilities": {
               "target": "Package",
-              "version": "[1.0.0.2, )"
+              "version": "[1.0.2.1, )"
             }
           },
           "imports": [
@@ -72,7 +75,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Host.linux-x64",
-              "version": "[5.0.6, 5.0.6]"
+              "version": "[5.0.8, 5.0.8]"
             }
           ],
           "frameworkReferences": {
@@ -80,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

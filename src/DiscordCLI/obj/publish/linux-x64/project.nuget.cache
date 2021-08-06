@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "CAxW2Uv5l//Ouqxw9eevSw+p9xw+CqA3d9EdOUR4CVFEemqZd4ue+a/6MNZjMZdrW++bwXfv+8QLpkXoanQVhA==",
+  "dgSpecHash": "b+dDcd52q2CiDsvG2IombcPA09I17i4zdCmaCSfWHkG2mFf7baA2kTxcMOI8xRfZLg6xmLKL8hd9i6kjGhOZGg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\David\\Google Drive\\Programmieren\\DiscordCLI\\DiscordCLI\\DiscordCLI.csproj",
+  "projectFilePath": "C:\\Users\\David\\Programmieren\\DiscordCLI\\src\\DiscordCLI\\DiscordCLI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\David\\.nuget\\packages\\alwaysuptodate\\1.0.0.4\\alwaysuptodate.1.0.0.4.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\colorminestandard\\1.0.0\\colorminestandard.1.0.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\dsharpplus\\3.2.3\\dsharpplus.3.2.3.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\microsoft.csharp\\4.3.0\\microsoft.csharp.4.3.0.nupkg.sha512",
@@ -54,7 +55,7 @@
     "C:\\Users\\David\\.nuget\\packages\\runtime.unix.system.net.sockets\\4.3.0\\runtime.unix.system.net.sockets.4.3.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\runtime.unix.system.private.uri\\4.3.0\\runtime.unix.system.private.uri.4.3.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\runtime.unix.system.runtime.extensions\\4.3.0\\runtime.unix.system.runtime.extensions.4.3.0.nupkg.sha512",
-    "C:\\Users\\David\\.nuget\\packages\\stone_red-c-sharp-utilities\\1.0.0.2\\stone_red-c-sharp-utilities.1.0.0.2.nupkg.sha512",
+    "C:\\Users\\David\\.nuget\\packages\\stone_red-c-sharp-utilities\\1.0.2.1\\stone_red-c-sharp-utilities.1.0.2.1.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\system.buffers\\4.3.0\\system.buffers.4.3.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
@@ -118,6 +119,7 @@
     "C:\\Users\\David\\.nuget\\packages\\system.security.principal.windows\\4.3.0\\system.security.principal.windows.4.3.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\system.text.encoding.extensions\\4.3.0\\system.text.encoding.extensions.4.3.0.nupkg.sha512",
+    "C:\\Users\\David\\.nuget\\packages\\system.text.json\\5.0.2\\system.text.json.5.0.2.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\system.text.regularexpressions\\4.3.0\\system.text.regularexpressions.4.3.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
@@ -127,7 +129,7 @@
     "C:\\Users\\David\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\David\\.nuget\\packages\\microsoft.netcore.app.host.linux-x64\\5.0.6\\microsoft.netcore.app.host.linux-x64.5.0.6.nupkg.sha512"
+    "C:\\Users\\David\\.nuget\\packages\\microsoft.netcore.app.host.linux-x64\\5.0.8\\microsoft.netcore.app.host.linux-x64.5.0.8.nupkg.sha512"
   ],
   "logs": []
 }

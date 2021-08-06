@@ -120,7 +120,7 @@ namespace DiscordCLI
         private void Updater_ProgressChanged(long? totalFileSize, long totalBytesDownloaded, double? progressPercentage)
         {
             Console.CursorLeft = 0;
-            ConsoleExt.WriteLine($"Downloading Update: {progressPercentage}% {totalBytesDownloaded}/{totalFileSize}", ConsoleColor.Yellow);
+            ConsoleExt.WriteLine($"Downloading update: {progressPercentage}% {totalBytesDownloaded}/{totalFileSize}", ConsoleColor.Yellow);
         }
 
         private void Updater_UpdateAvailible(string version, string additionalInformation)
