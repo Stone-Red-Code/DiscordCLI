@@ -4,12 +4,12 @@
 
 ## Warning
 
-**Use this software at your own risk!**\
+**If you want to use this software with a user topken use it at your own risk!**\
 This isn't directly a selfbot, but Discord may count it as User account automation and this is against their TOS.\
 I guess everything should be fine as long as you don't behave conspicuously but still proceed with caution!\
-Currently there are no known cases where a user got banned for using this Discord client but that doesn't mean it will never happen.\
 Don't blame me if you get banned!\
-I will update the above if anything changes!
+
+You can use this client with a Bot token wihtout breaking Discords TOS
 
 ## Usage
 
@@ -48,8 +48,7 @@ I will update the above if anything changes!
 ### channels
 
 - lists all channels of guild
-
-  - args: \<guild name/index>
+- args: \<guild name/index>
 
 ### enterg
 
