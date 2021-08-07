@@ -16,7 +16,7 @@ You can use this client with a Bot token wihtout breaking Discords TOS
 1. [Download]("https://github.com/Stone-Red-Code/DiscordCLI/releases
 ) one of the releases
 2. Execute the `DiscordCLI` file.
-3. Enter your [Token](https://github.com/Tyrrrz/DiscordChatExporter/wiki/Obtaining-Token-and-Channel-ID">)
+3. Enter your [Token](https://github.com/Tyrrrz/DiscordChatExporter/wiki/Obtaining-Token-and-Channel-IDs)
 4. Enter one of the commands below
 
 ## Commands
