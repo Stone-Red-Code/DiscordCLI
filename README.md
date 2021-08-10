@@ -5,11 +5,11 @@
 ## Warning
 
 **If you want to use this software with a user token use it at your own risk!**\
-This isn't directly a selfbot, but Discord may count it as User account automation and this is against their TOS.\
-I guess everything should be fine as long as you don't behave conspicuously but still proceed with caution!\
-Don't blame me if you get banned!\
+This isn't directly a selfbot, but Discord may count it as User account automation and this is against their TOS and Discord doesn't like third party clients very much!\
+I think everything should be fine as long as you don't act conspicuous, but still, proceed with caution!\
+**Don't blame me if you get banned!**
 
-You can use this client with a bot token wihtout breaking Discords TOS
+You can use this client with a bot token without violating Discords TOS!
 
 ## Usage
 
